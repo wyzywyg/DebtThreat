@@ -13,8 +13,8 @@
 ## Introduction 💣
 <!-- Your introduction content here -->
 
-
 ### <a name="features"></a>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
 ## Features 🩸
 <!-- Your features content here -->
 🔻 ***Master Financial Decisions:***
@@ -31,15 +31,16 @@
 
 🔻  ***Your Success, Your Way:***
     Debt Threat adapts to your choices, offering a personalized gaming experience. Set goals, track progress, and witness the impact of your decisions on your virtual college life.
-
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
 ### <a name="purpose"></a>
 ## Purpose 🔪
 <!-- Your purpose content here -->
 
 ### <a name="members"></a>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
 ## Member Portfolio ☠️
 <!-- Your member portfolio content here -->
-<p align="center"><img src="https://i.ibb.co/5RRH6Jq/403606594-332525176168451-5477272218065844433-n.jpg" width="200" height="200" />
+<p align="center"><img src="https://i.ibb.co/ZJrbkrz/387328927-1112705976772427-8860459638482587988-n.jpg" width="200" height="200" />
 <p align="center">
 Arquillo, Jaron Louise 
 <ul>
@@ -49,7 +50,7 @@ Arquillo, Jaron Louise
 	<li>22-03531@g.batstate-u.edu.ph</li>
 </ul>
 </p>
-
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
 <p align="center"><img src="https://i.ibb.co/zr7qqqH/387555026-701828924724617-5652529007753459129-n.jpg" width="200" height="200" />
 <p align="center">
 Banaag, Vince Clyde S. 
@@ -60,8 +61,8 @@ Banaag, Vince Clyde S.
 	<li>22-06373@g.batstate-u.edu.ph</li>
 </ul>
 </p>
-
-<p align="center"><img src="https://i.ibb.co/f9BXGky/356934952-1964839697215651-8331300348850477470-n.jpg" width="200" height="200" />
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
+<p align="center"><img src="https://i.ibb.co/NCqL8Wm/403629066-664455985677276-3442638710394462470-n.jpg" width="200" height="200" />
 <p align="center">
 De Jose, Mary Kristine A. 
 <ul>
@@ -71,8 +72,8 @@ De Jose, Mary Kristine A.
 	<li>22-03865@g.batstate-u.edu.ph</li>
 </ul>
 </p>
-
-<p align="center"><img src="https://i.ibb.co/HnHBjJN/393085378-747753213804148-7852580846351402392-n.jpg" width="200" height="200" />
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
+<p align="center"><img src="https://i.ibb.co/0y8tDxG/400157860-725047402815272-7964848878070784083-n.jpg" width="200" height="200" />
 <p align="center">
 Marasigan, Eljay P. 
 <ul>
@@ -82,7 +83,7 @@ Marasigan, Eljay P.
 	<li>22-05538@g.batstate-u.edu.ph</li>
 </ul>
 </p>
-
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
 <p align="center"><img src="https://i.ibb.co/9bkkmDp/383832230-300337922732392-7098374674512365882-n.jpg" width="200" height="200" />
 <p align="center">
 Reyes, Paul Alexis J. 
@@ -93,3 +94,4 @@ Reyes, Paul Alexis J.
 	<li>22-00869@g.batstate-u.edu.ph</li>
 </ul>
 </p>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
