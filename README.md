@@ -42,7 +42,19 @@ Are you ready to ready to make decisions that will either cost you money or cost
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
 ### <a name="purpose"></a>
 ## Purpose 🔪
-<!-- Your purpose content here -->
+In utmost accordance with certain Sustainable Development Goals (SDGs) from the United Nations (UN), this program was created in pursuit of this specific objective. 📝
+<table>
+	<tr>
+		<th><img src="https://i.ibb.co/g99dffj/giphy.gif" alt="giphy" border="3", width=100 height=100/></th>
+		<td><strong>Target 8.2:</strong> Achieve higher levels of economic productivity through diversification, technological upgrading and innovation, including through a focus on high-value added and labor-intensive sectors</td>
+	</tr>
+</table>
+
+
+It aims to help people achieve higher levels of economic productivity as well, which is in line with Indicator 8.2 of the SDG known as “Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.” 📈
+
+Moreover, the creators of the program intend to assist people who desire to learn things in the field of finance, as well as help them in bettering their competency when it comes to ✨decision-making and critical thinking.✨
+
 
 ### <a name="members"></a>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
@@ -52,18 +64,18 @@ Are you ready to ready to make decisions that will either cost you money or cost
 <p align="center">
 Arquillo, Jaron Louise 
 <ul>
-	<li>A Mess in Progress(he/him) </li>
+	<li>A Mess in Progress (he/him) </li>
 	<li>INTJ</li>
 	<li>Capricorn</li>
 	<li>22-03531@g.batstate-u.edu.ph</li>
 </ul>
 </p>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
-<p align="center"><img src="https://i.ibb.co/zr7qqqH/387555026-701828924724617-5652529007753459129-n.jpg" width="200" height="200" />
+<p align="center">
 <p align="center">
 Banaag, Vince Clyde S. 
 <ul>
-	<li>PhD in Wishful Thinking (he/him) </li>
+	<li>putting the astig in astigmatism (he/him) </li>
 	<li>INTP</li>
 	<li>Gemini</li>
 	<li>22-06373@g.batstate-u.edu.ph</li>
