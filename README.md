@@ -39,3 +39,57 @@
 ### <a name="members"></a>
 ## Member Portfolio ☠️
 <!-- Your member portfolio content here -->
+<p align="center"><img src="https://i.ibb.co/5RRH6Jq/403606594-332525176168451-5477272218065844433-n.jpg" width="200" height="200" />
+<p align="center">
+Arquillo, Jaron Louise 
+<ul>
+	<li>Maacm (he/him) </li>
+	<li>INTJ</li>
+	<li>Capricorn</li>
+	<li>22-03531@g.batstate-u.edu.ph</li>
+</ul>
+</p>
+
+<p align="center"><img src="https://i.ibb.co/zr7qqqH/387555026-701828924724617-5652529007753459129-n.jpg" width="200" height="200" />
+<p align="center">
+Banaag, Vince Clyde S. 
+<ul>
+	<li>PhD in Wishful Thinking (he/him) </li>
+	<li>INTP</li>
+	<li>Gemini</li>
+	<li>22-06373@g.batstate-u.edu.ph</li>
+</ul>
+</p>
+
+<p align="center"><img src="https://i.ibb.co/f9BXGky/356934952-1964839697215651-8331300348850477470-n.jpg" width="200" height="200" />
+<p align="center">
+De Jose, Mary Kristine A. 
+<ul>
+	<li>WhenWeWereYoung Enjoyer (she/her) </li>
+	<li>ISTP</li>
+	<li>Gemini</li>
+	<li>22-03865@g.batstate-u.edu.ph</li>
+</ul>
+</p>
+
+<p align="center"><img src="https://i.ibb.co/HnHBjJN/393085378-747753213804148-7852580846351402392-n.jpg" width="200" height="200" />
+<p align="center">
+Marasigan, Eljay P. 
+<ul>
+	<li>Twitter enjoyer (she/her) </li>
+	<li>INTJ</li>
+	<li>Cancer</li>
+	<li>22-05538@g.batstate-u.edu.ph</li>
+</ul>
+</p>
+
+<p align="center"><img src="https://i.ibb.co/9bkkmDp/383832230-300337922732392-7098374674512365882-n.jpg" width="200" height="200" />
+<p align="center">
+Reyes, Paul Alexis J. 
+<ul>
+	<li>Simp for Mary (he/him) </li>
+	<li>INTP</li>
+	<li>Cancer</li>
+	<li>22-00869@g.batstate-u.edu.ph</li>
+</ul>
+</p>
