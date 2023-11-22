@@ -39,7 +39,7 @@ Are you ready to ready to make decisions that will either cost you money or cost
 
 🔻  ***Your Success, Your Way:***
     Debt Threat adapts to your choices, offering a personalized gaming experience. Set goals, track progress, and witness the impact of your decisions on your virtual college life. </div>
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 ### <a name="purpose"></a>
 ## Purpose 🔪
 <div align="justify"> In utmost accordance with certain Sustainable Development Goals (SDGs) from the United Nations (UN), this program was created in pursuit of this specific objective. 📝 
