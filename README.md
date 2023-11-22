@@ -44,7 +44,7 @@
 <p align="center">
 Arquillo, Jaron Louise 
 <ul>
-	<li>Maacm (he/him) </li>
+	<li>A Mess in Progress(he/him) </li>
 	<li>INTJ</li>
 	<li>Capricorn</li>
 	<li>22-03531@g.batstate-u.edu.ph</li>
