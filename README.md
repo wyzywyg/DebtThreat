@@ -63,7 +63,7 @@ It aims to help people achieve higher levels of economic productivity  which is 
 <p align="center">
 Arquillo, Jaron Louise 
 <ul>
-	<li>A Mess in Progress (he/him) </li>
+	<li>Surviving in 1HP (he/him) </li>
 	<li>INTJ</li>
 	<li>Capricorn</li>
 	<li>22-03531@g.batstate-u.edu.ph</li>
