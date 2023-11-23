@@ -20,7 +20,6 @@ Welcome to <img src="https://i.ibb.co/1b7syj4/8fbde1eefb01a339aa88ecb27fcf0fa8.p
 Your character's dreams hang in the balance as you navigate the complexities of your academic facade, financial endeavors, and the looming threat to you and your loved ones' well-being. Be careful on what you spend, or else meet your life's end.
 
 Are you ready to ready to make decisions that will either cost you money or cost you your life? 
-
 ### <a name="features"></a>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
 ## Features 🩸
