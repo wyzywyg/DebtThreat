@@ -94,8 +94,18 @@ class GameLogic:
             self.dorm_type = dorm_type
         # Deduct the chosen dorm type's cost from debt_money and set as the new.
 
-
-        
+    def set_scenarioAA(self, answer):
+        if answer == 'a':
+            self.debt_money -=10000
+            self.education += 5
+            self.health += 0
+            self.happiness += 7
+        elif answer == 'b':
+            self.debt_money -=5000
+            self.education += 3
+            self.health += 0
+            self.happiness += 3
+            
     def update_points(self):
         # Logic to update points based on the chosen difficulty, program, and dorm type
         pass
