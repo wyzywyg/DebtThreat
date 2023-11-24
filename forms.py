@@ -25,3 +25,6 @@ class DormForm(FlaskForm):
     dorm_type = SelectField('Choose Dorm Type', choices=[('solo_room', 'Solo Room'), ('bed_space', 'Bed Space')])
     submit = SubmitField('Continue')
 
+class FirstScenarioForm(FlaskForm):
+    choice = SelectField('Choose Decision', choices=[('a', ' '), ('b', ' ')])
+    submit = SubmitField('Submit')
