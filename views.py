@@ -19,6 +19,11 @@ def new_game():
         return redirect(url_for('index.difficulty'))
     return render_template('new_game.html', form=form)
 
+@index.route('/quit_game')
+def quit_game():
+    # Add any necessary cleanup logic here
+    return render_template('quit_game.html')
+
 @index.route('/difficulty', methods=['GET', 'POST'])
 def difficulty():
     form = DifficultyForm()
@@ -69,6 +74,8 @@ def dorm():
         game_logic.set_dorm(dorm_type)
         return redirect(url_for('index.summary'))
     return render_template('dorm.html', form=form)
+
+
 
 @index.route('/summary')
 def summary():
