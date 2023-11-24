@@ -10,8 +10,7 @@ class NewGameForm(FlaskForm):
     submit = SubmitField('Start New Game')
 
 class DifficultyForm(FlaskForm):
-    difficulty = SelectField('Choose Difficulty', choices=[('easy', 'Easy'), ('normal', 'Normal'), ('hard', 'Hard'), ('hardcore', 'Hardcore')])
-    submit = SubmitField('Continue')
+    difficulty = SelectField('Choose Difficulty', choices=[('easy', '96-100'), ('normal', '90-95'), ('hard', '80-89'), ('hardcore', 'Below 79')])
 
 class UniversityForm(FlaskForm):
     university_type = SelectField('Choose University Type', choices=[('public', 'Public'), ('private', 'Private')])
