@@ -1,8 +1,12 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, SubmitField
 
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+
 class NewGameForm(FlaskForm):
-    name = StringField('Player Name')
+    name = StringField(validators=[DataRequired()])
     submit = SubmitField('Start New Game')
 
 class DifficultyForm(FlaskForm):
@@ -20,3 +24,4 @@ class ProgramForm(FlaskForm):
 class DormForm(FlaskForm):
     dorm_type = SelectField('Choose Dorm Type', choices=[('solo_room', 'Solo Room'), ('bed_space', 'Bed Space')])
     submit = SubmitField('Continue')
+
