@@ -39,9 +39,25 @@ class GameLogic:
         if self.difficulty in ['easy', 'normal', 'hard']:
             # Allow the user to choose between public and private university options
             self.university_type = university_type
+
+            # Add points based on the chosen university type
+            if university_type == 'public':
+                self.education += 10
+                self.health += 10
+                self.happiness += 10
+            elif university_type == 'private':
+                self.education += 20
+                self.health += 20
+                self.happiness += 20
+
         elif self.difficulty == 'hardcore':
             # Limit the user to choose private university only
             self.university_type = 'private'
+
+            # Add points for hardcore difficulty and private university
+            self.education += 30
+            self.health += 30
+            self.happiness += 30
 
     def set_program(self, program):
         program_costs = {
@@ -78,6 +94,8 @@ class GameLogic:
             self.dorm_type = dorm_type
         # Deduct the chosen dorm type's cost from debt_money and set as the new.
 
+
+        
     def update_points(self):
         # Logic to update points based on the chosen difficulty, program, and dorm type
         pass
