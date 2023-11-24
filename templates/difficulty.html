@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Game</title>
+    <title>Difficulty</title>
     <style>
         body {
             background-image: url('https://i.ibb.co/f4zFmRR/enlarge-cover.png');
@@ -24,77 +24,66 @@
         }
 
         .container {
-            margin-top: 130px; 
+            max-width: 600px;
+            margin-top: 180px;
+            background-color: rgba(0, 0, 0, 0.486); 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        h1, form {
+        h1 {
             text-align: center;
             color: #ffffff;
             font-size: 1.5em;
-            background-color: rgba(125, 187, 196, 0.514); /* Adjust transparency here */
-            padding: 8px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 12px; /*margin in the taas*/
         }
-        h2, form {
-            color: #f1eaea; 
-            font-size: 1em;
-         }
+
         form {
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.486); /* Adjust transparency here */
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 30px; /* Add margin to the top of the form */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         label {
             display: block;
-            margin-bottom: 7px;
+            font-size: 1em;
+            color: #fff;
+            margin-bottom: 10px;
         }
 
-        input[type="text"] {
-            text-align: center;
-            background-color: #f0f0f0; /*kung balak paltan yung color ng lalagyn ng username*/
-            font-size: 0.9em;
-            width: 200px;
-            padding:7px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-            border: 3px solid #140505;
-            border-radius: 4px;
+        input[type="radio"] {
+            margin-right: 5px;
         }
 
-        input[type="submit"] {
+        button {
             background-color: #000000;
-            color: white;
-            padding: 10px 25px;
+            color: #fff;
+            padding: 10px 20px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
 
-        input[type="submit"]:hover {
+        button:hover {
             background-color: #4b0303;
         }
     </style>
 </head>
 <body>
     <div class="container">
-       
-        <form method="POST" action="{{ url_for('index.new_game') }}">
-            <h1>NEW GAME</h1>
-            <h2>Enter Username:</h2>
+        <h1>General Weighted Average</h1>
+        <form method="POST" action="{{ url_for('index.difficulty') }}">
             {{ form.hidden_tag() }}
-            {{ form.name.label }}
-            {{ form.name() }}
-            <br>
-            <input type="submit" value="Submit">
+            <div>
+                {% for radio in form.difficulty %}
+                    <label>
+                        <input type="radio" name="{{ form.difficulty.name }}" value="{{ radio.data }}">
+                        {{ radio.label.text }}
+                    </label>
+                {% endfor %}
+            </div>
+            <button type="submit">Continue</button>
         </form>
     </div>
 </body>
 </html>
-
