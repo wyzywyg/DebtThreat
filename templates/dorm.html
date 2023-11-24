@@ -1,0 +1,25 @@
+<!-- Inside templates/dorm.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Dorm</title>
+</head>
+<body>
+    <h1>Choose Dorm</h1>
+    <form method="POST" action="{{ url_for('index.dorm') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            {% for radio in form.dorm_type %}
+                <label>
+                    <input type="radio" name="{{ form.dorm_type.name }}" value="{{ radio.data }}">
+                    {{ radio.label.text }}
+                </label>
+            {% endfor %}
+        </div>
+        <button type="submit">Continue</button>
+    </form>
+</body>
+</html>

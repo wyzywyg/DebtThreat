@@ -1,0 +1,23 @@
+<!-- Inside templates/summary.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Summary</title>
+</head>
+<body>
+    <h1>Game Summary</h1>
+    <p>Player Name: {{ game.player_name }}</p>
+    <p>Difficulty: {{ game.difficulty }}</p>
+    <p>University Type: {{ game.university_type }}</p>
+    <p>Program: {{ game.program if game.program else 'Not selected' }}</p>
+    <p>Dorm Type: {{ game.dorm_type if game.dorm_type else 'Not selected' }}</p>
+    <p>Debt: ${{ game.debt }}</p>
+    <p>Debt Money: ${{ game.debt_money }}</p>
+    <p>Education: {{ game.education }}</p>
+    <p>Health: {{ game.health }}</p>
+    <p>Happiness: {{ game.happiness }}</p>
+</body>
+</html>
