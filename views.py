@@ -78,11 +78,13 @@ def dorm():
 
 @index.route('/scenario', methods=['GET', 'POST'])
 def scenario():
+    game_logic.update_points()
     form = FirstScenarioForm()
     if form.validate_on_submit():
         answer = form.choice.data
         game_logic.set_scenarioAA(answer)
-    return render_template('scenarioAA.html', form=form)
+    return render_template('scenarioAA.html', form=form, game=game_logic)
+
 
 
 @index.route('/summary')
