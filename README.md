@@ -59,7 +59,7 @@ It aims to help people achieve higher levels of economic productivity  which is 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
 ## Member Portfolio ☠️
 <!-- Your member portfolio content here -->
-<p align="center"><img src="https://i.ibb.co/ZJrbkrz/387328927-1112705976772427-8860459638482587988-n.jpg" width="200" height="200" />
+<p align="center"><img src="https://i.ibb.co/jLSS1Gr/387328927-1112705976772427-8860459638482587988-n-removebg-preview.png" width="200" height="200" />
 <p align="center">
 Arquillo, Jaron Louise 
 <ul>
@@ -70,7 +70,7 @@ Arquillo, Jaron Louise
 </ul>
 </p>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
-<p align="center">
+<p align="center"><img src="https://i.ibb.co/VtMsB8v/399831936-1107015587402951-1751011227259389244-n-removebg-preview.png" width="200" height="200" />
 <p align="center">
 Banaag, Vince Clyde S. 
 <ul>
@@ -103,7 +103,7 @@ Marasigan, Eljay P.
 </ul>
 </p>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
-<p align="center"><img src="https://i.ibb.co/9bkkmDp/383832230-300337922732392-7098374674512365882-n.jpg" width="200" height="200" />
+<p align="center"><img src="https://i.ibb.co/HCvmMgC/399840751-6737253069676296-2239225414771579590-n.jpg" width="200" height="200" />
 <p align="center">
 Reyes, Paul Alexis J. 
 <ul>
