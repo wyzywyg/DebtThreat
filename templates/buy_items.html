@@ -1,0 +1,26 @@
+<!-- buy_items.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Items</title>
+</head>
+<body>
+    <h1>Buy Items</h1>
+    <form method="POST">
+        <ul>
+            {% for item in items %}
+                <li>
+                    <label>
+                        <input type="checkbox" name="items" value="{{ item.name }}">
+                        {{ item.name }} - ${{ item.cost }}
+                    </label>
+                </li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Buy Selected Items">
+    </form>
+    <a href="{{ url_for('index.summary') }}">Back to Summary</a>
+</body>
+</html>
