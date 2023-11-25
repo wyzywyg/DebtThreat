@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Game</title>
     <style>
-         @font-face {
+        @font-face {
             font-family: Minecraftory;
             src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
         }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
         body {
             background-image: url('https://i.ibb.co/f4zFmRR/enlarge-cover.png');
             background-attachment: fixed;
@@ -26,7 +31,16 @@
         }
 
         .container {
-            margin-top: 130px; 
+            font-family: Minecraftory;
+            max-width: 600px;
+            margin-top: 180px;
+            background-color: rgb(82, 5, 5);
+            border-style: dashed;
+            border-color: cornsilk;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.782);
+            animation: fadeIn 2s; 
         }
 
         h1, form {
@@ -47,11 +61,10 @@
          }
         form {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.486); /* Adjust transparency here */
+            background-color: rgb(82, 5, 5);
             padding: 50px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 30px; /* Add margin to the top of the form */
         }
 
         label {
@@ -84,7 +97,8 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #4b0303;
+            background-color: #ffffff;
+            color:#000000;
         }
     </style>
 </head>
@@ -100,6 +114,8 @@
             <br>
             <input type="submit" value="Submit">
         </form>
+        
+        
     </div>
 </body>
 </html>
