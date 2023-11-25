@@ -6,18 +6,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose Dorm</title>
+    <style>
+        body {
+            background-image: url('https://i.ibb.co/f4zFmRR/enlarge-cover.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        @font-face {
+            font-family: Minecraftory;
+            src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
+        }
+
+        h1 {
+            font-family: Minecraftory;
+            text-align: center;
+            color: #ffffff;
+            font-size: 50px;
+        }
+
+        form {
+            display: flex;
+            font-size: 30px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            position: relative;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button {
+            position: relative;
+            padding: 20px;
+            width: 276px; /* Set a width for a rectangular shape */
+            height: 223px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            transition: background 0.3s, opacity 0.3s; /* Combined transitions */
+            background: rgba(139, 0, 0, 0.7); /* DarkRed with reduced opacity */
+        }
+
+        .dorm-title {
+            position: relative;
+            font-family: Minecraftory;
+            z-index: 2;
+            color: white;
+            opacity: 1;
+            transition: opacity 0.3s; /* Smooth transition on hover */
+        }
+        
+        .dorm-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 59%;
+            height: 70%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0; /* Initial opacity set to 0 */
+            transition: opacity 0.3s; /* Smooth transition on hover */
+        }
+
+        /* Images for each dorm type */
+        button[data-dorm="Solo Room"] .dorm-image {
+            content: url("https://i.ibb.co/StN7264/px-Art-20.png");
+        }
+
+        button[data-dorm="Bed Space"] .dorm-image {
+            content: url("https://i.ibb.co/MGR2k06/px-Art-19.png"); 
+        }
+
+        button:hover .dorm-title {
+            opacity: 0; /* Hide the title on hover */
+        }
+
+        button:hover .dorm-image {
+            opacity: 1; /* Increase image opacity on hover */
+        }
+
+        button:hover {
+            opacity: 0.8;
+            background-color: #1d0202;
+        }
+    </style>
 </head>
 <body>
     <h1>Choose Dorm</h1>
     <form method="POST" action="{{ url_for('index.dorm') }}">
         {{ form.hidden_tag() }}
-        <div>
+        <div class="program-options">
             {% for radio in form.dorm_type %}
                 <label>
-                    <button type="radio" name="{{ form.dorm_type.name }}" value="{{ radio.data }}">
-                    {{ radio.label.text }}
+                    <button type="radio" name="{{ form.dorm_type.name }}" value="{{ radio.data }}" data-dorm="{{ radio.label.text }}">
+                        <div class="dorm-title">{{ radio.label.text }}</div>
+                        <img class="dorm-image" src="" alt="Dorm Image">
+                    </button>
                 </label>
-            </button>
             {% endfor %}
         </div>
     </form>
