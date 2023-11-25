@@ -28,6 +28,11 @@
             src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
         }
 
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
         h1 {
             font-family: Minecraftory;
             text-align: center;
@@ -58,6 +63,7 @@
             border-radius: 8px;
             transition: background 0.3s, opacity 0.3s; /* Combined transitions */
             background: rgba(139, 0, 0, 0.7); /* DarkRed with reduced opacity */
+            animation: fadeIn 2s; 
         }
 
         .dorm-title {
