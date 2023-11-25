@@ -13,6 +13,8 @@
 ## Introduction 💣
 <div align="justify"> Have you ever heard of the 🦋 butterfly effect? It is the idea that seemingly trivial instances can lead to profound and possibly life-altering consequences. In this game often referred to as life, stakes are always high. A simple decision may result to outcomes unforeseen by the layman. This game is that, just much bloodier.
 
+
+
 Welcome to <img src="https://i.ibb.co/1b7syj4/8fbde1eefb01a339aa88ecb27fcf0fa8.png" height="17" width="90"/>, a decision-based game that plunges you into the journey of a Filipino student emerging from a poverous background, striving to overcome economic adversity through the pursuit of a college degree. In this narrative, you find yourself at crossroads where the only path with access to the education you seek is a student loan offered by a criminal syndicate, amounting to a daunting 500 000 pesos.
 
 Your character's dreams hang in the balance as you navigate the complexities of your academic facade, financial endeavors, and the looming threat to you and your loved ones' well-being. Be careful on what you spend, or else meet your life's end.
