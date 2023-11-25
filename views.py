@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for
-from forms import NewGameForm, DifficultyForm, UniversityForm, ProgramForm, DormForm
+from forms import NewGameForm, DifficultyForm, UniversityForm, ProgramForm, DormForm, ScenarioForm
 from game_logic import GameLogic
 
 index = Blueprint('index', __name__)
@@ -72,22 +72,26 @@ def dorm():
     if form.validate_on_submit():
         dorm_type = form.dorm_type.data
         game_logic.set_dorm(dorm_type)
-        return redirect(url_for('index.summary'))
+        return redirect(url_for('index.scenarioAA'))
     return render_template('dorm.html', form=form)
 
-
-@index.route('/scenario', methods=['GET', 'POST'])
-def scenario():
-    game_logic.update_points()
-    form = FirstScenarioForm()
+@index.route('/scenarioAA', methods=['GET', 'POST'])
+def scenarioAA():
+    choices = [('A', 'New textbooks Cost: ₱10,000'), ('B', 'Old textbooks Cost: ₱10,000')]
+    form = ScenarioForm(choices=choices)
     if form.validate_on_submit():
         answer = form.choice.data
-        game_logic.set_scenarioAA(answer)
+        game_logic.set_scenario(answer, 10000, 5, 0, 7, 5000, 3, 0, 3)
+        return redirect(url_for('index.scenarioAB'))
     return render_template('scenarioAA.html', form=form, game=game_logic)
 
+@index.route('/scenarioAB', methods=['GET', 'POST'])
+def scenarioAB():
+    choices = [('A', 'Accept'), ('B', 'Decline')]
+    form = ScenarioForm(choices=choices)
+    if form.validate_on_submit():
+        answer = form.choice.data
+        game_logic.set_scenario(answer, -5000, -5, -2, -2, 0, 2, -1, -1)
+        return redirect(url_for('index.scenarioAB'))
+    return render_template('scenarioAB.html', form=form, game=game_logic)
 
-
-@index.route('/summary')
-def summary():
-    game_logic.update_points()
-    return render_template('summary.html', game=game_logic)
