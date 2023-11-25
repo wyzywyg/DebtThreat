@@ -1,6 +1,6 @@
-<!-- menu.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,51 +14,197 @@
             background-repeat: repeat;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
         }
-        
+
+        @font-face {
+            font-family: Minecraftory;
+            src: url(Minercraftory.ttf);
+        }
+
+        @font-face {
+            font-family: Creepster;
+            src: url('https://fonts.gstatic.com/s/creepster/v10/AlZy_zVJHMWrLl7uA2T82A.ttf');
+        }
+
         h1 {
+            font-family: Minecraftory;
             color: white;
             text-align: center;
         }
-        
+
         ul {
+            font-family: Minecraftory;
             list-style-type: none;
             padding: 0;
             display: flex;
-            flex-direction: column; /* Make buttons vertical */
+            flex-direction: column;
             align-items: center;
         }
-        
+
         li {
             margin: 10px 0;
         }
-        
+
         a {
             display: block;
             border-radius: 8px;
-            padding: 15px 20px; /* Set fixed height and width for the buttons */
+            padding: 15px 20px;
             text-align: center;
             width: 300px;
             height: 20px;
             text-decoration: none;
             color: white;
-            background-color: rgba(0, 0, 0, 0.7); /* Adjust transparency here */
-            transition: background-color 0.3s ease; /* Add smooth transition effect */
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: background-color 0.3s ease;
         }
-        
+
         a:hover {
-            background-color: rgba(139, 0, 0, 0.9); /* Adjust hover background transparency here */
+            background-color: rgba(139, 0, 0, 0.9);
         }
-            </style>
-        
+
+        #icon-container {
+            position: fixed;
+            top: 110px;
+            right: -6px;
+            cursor: pointer;
+        }
+
+        #icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            transition: transform 0.8s ease;
+        }
+
+        #icon.rotate-icon {
+            transform: rotate(105deg);
+        }
+
+        #mechanics-container {
+            position: fixed;
+            text-align: center;
+            font-family: Creepster, sans-serif;
+            font-size: 18px;
+            color: cornsilk;
+            border-radius: 10px;
+            top: 90px;
+            right: -1550px;
+            max-height: 670px; /* Adjusted the max-height */
+            width: 1350px;
+            background-color: rgba(80, 13, 13, 0.886);
+            box-shadow: 0 0 30px rgba(51, 35, 1, 0.703);
+            z-index: 500;
+            transition: right 0.4s ease-in-out;
+            overflow: auto;
+        }
+
+        .mechanics-block {
+            padding: 20px;
+            margin: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .mechanics-title {
+            font-family: Minecraftory;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+            margin-bottom: 20px;
+        }
+
+        #mechanics-container:hover {
+            right: 90px;
+        }
+
+        .maroon {
+            background-color: maroon;
+        }
+
+        .black {
+            background-color: black;
+        }
+    </style>
 </head>
+
 <body>
+    <div id="icon-container">
+        <div id="icon" onclick="toggleMechanics()"><img src="https://i.ibb.co/FbdmCvp/image-3.png" width="350"
+                height="300" /></div>
+    </div>
+    <center>
+        <br><br><br><br><br><br>
+        <img src="https://i.ibb.co/j6zC0X3/ezgif-4-241998eeff.gif" height="200" width="190" /> &nbsp; &nbsp;
+        <img src="db.png" height="170" width="800" /><br><br>
+    </center>
     <ul>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <li><a href="{{ url_for('index.new_game') }}">Start New Game</a></li>
-        <li><a href="{{ url_for('index.summary') }}">Leaderboard</a></li>
-        <li><a href="{{ url_for('index.quit_game') }}">Quit Game</a></li>
+        <br><br>
+        <li><a href="{{ url_for('index.new_game') }}">New Game</a></li>
+        <li><a href="#">Leaderboard</a></li>
+        <li><a href="#">Quit Game</a></li>
     </ul>
+
+    <!-- MECHANICS SECTION -->
+    <div id="mechanics-container">
+        <div class="mechanics-block">
+            <p class="mechanics-title">Mechanics</p>
+            <p>Game Start: The player enters a unique username to start a new game or continue a previous game. The
+                player starts with a budget of<b> ₱500,000.</b></p>
+        </div>
+        <div class="mechanics-block">
+            <p class="mechanics-title">Selection</p>
+            <p>The player chooses a school and a course. Each course has a different tuition fee deducted from the
+            <b>initial budget</b>. Each course also has a corresponding possible salary range, determined by the player's
+                education points.</p>
+        </div>
+        <div class="mechanics-block">
+            <p class="mechanics-title">Yearly Scenarios</p>
+            <p>The game is divided into four parts, representing the <b>four years of college</b>. Each year presents different
+                scenarios that can increase or decrease the player's education, health, and happiness points.</p>
+        </div>
+        <div class="mechanics-block">
+            <p class="mechanics-title">Health Bar</p>
+            <p>If the health bar drops <b>below 10</b>, the player must pay <b>₱10,000 </b>for medical expenses.</p>
+        </div>
+        <div class="mechanics-block">
+            <p class="mechanics-title">Salary Calculation</p>
+            <p>The player’s monthly salary is determined by their education points:</p>
+                <p><b>1-20 points:</b> Lowest monthly salary</p>
+                <p><b>21-40 points:</b> Second lowest monthly salary</p>
+                <p><b>41-60 points:</b> Medium monthly salary</p>
+                <p><b>61-80 points:</b> High monthly salary</p>
+                <p><b> 81-100 points:</b> Highest monthly salary</p>
+        
+        </div>
+         <div class="mechanics-block">
+            <p class="mechanics-title">Winning Condition</p>
+            <p>The player wins if the total of their first six months’ salary
+             and the remaining money from the initial ₱500,000 is <b>enough to repay the ₱500,000 debt.</b></p>
+        </div>
+        <div class="mechanics-block">
+            <p class="mechanics-title">Leaderboard</p>
+            <p>Players’ scores are ranked on a leaderboard, <b>promoting competition.</b>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function toggleMechanics() {
+            var icon = document.getElementById('icon');
+            var mechanicsContainer = document.getElementById('mechanics-container');
+
+            icon.classList.toggle('rotate-icon');
+            mechanicsContainer.style.right = mechanicsContainer.style.right === '90px' ? '-1550px' : '90px';
+        }
+    </script>
+
 </body>
+
 </html>
