@@ -20,15 +20,17 @@
             justify-content: flex-start;
             height: 100vh;
         }
+
         @font-face {
             font-family: Minecraftory;
             src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
         }
+
         .container {
             font-family: Minecraftory;
             max-width: 600px;
             margin-top: 180px;
-            background-color: rgb(82, 5, 5); 
+            background-color: rgb(82, 5, 5);
             border-style: dashed;
             border-color: cornsilk;
             padding: 20px;
@@ -51,18 +53,13 @@
 
         label {
             font-family: Minecraftory;
-            display: block;
-            font-size: 0.8em;
+            font-size: 0.5em;
             color: #fff;
-            margin-bottom: 1px;
-        }
-
-        .radio-container {
             margin-bottom: 10px;
         }
 
         input[type="radio"] {
-            display: none; 
+            display: none;
         }
 
         button {
@@ -70,32 +67,35 @@
             background-color: #000000;
             color: #fff;
             padding: 10px 20px;
-            width: 150px; /* Set a fixed width for the buttons */
+            width: 200px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: transform 0.3s ease; /* Add transition for smooth scaling */
+            transition: transform 0.3s ease;
+            display: block; /* Display buttons as block elements */
+            margin-bottom: 10px; /* Add margin to separate buttons */
         }
 
         button:hover {
             background-color: #1d0202;
-            transform: scale(1.1); /* Enlarge the button on hover */
+            transform: scale(1.1);
         }
-        </style>
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>General Weighted Average</h1>
         <form method="POST" action="{{ url_for('index.difficulty') }}">
             {{ form.hidden_tag() }}
-            {% for radio in form.difficulty %}
-                <div class="radio-container">
+            <div class="radio-container">
+                {% for radio in form.difficulty %}
                     <label>
-                        <input type="radio" name="{{ form.difficulty.name }}" value="{{ radio.data }}">
-                        <button type="button">{{ radio.label.text }}</button>
+                        <button type="radio" name="{{ form.difficulty.name }}" value="{{ radio.data }}">
+                            {{ radio.label.text }}
+                        </button>
                     </label>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </form>
     </div>
 </body>
