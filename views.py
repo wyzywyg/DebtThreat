@@ -160,5 +160,14 @@ def scenarioBD():
         return redirect(url_for('index.scenarioCA'))
     return render_template('scenarioBD.html', form=form, game=game_logic)
 
+@index.route('/scenarioCA', methods=['GET', 'POST'])
+def scenarioCA():
+    choices = [('A', 'Use Loan'), ('B', 'Prioritize on Studies')]
+    form = ScenarioForm(choices=choices)
+    if form.validate_on_submit():
+        answer = form.choice.data
+        game_logic.set_scenario(answer, -15000, -10, 5, 15, 0, 5, -7, -10)
+        return redirect(url_for('index.scenarioCB'))
+    return render_template('scenarioCA.html', form=form, game=game_logic)
 
 
