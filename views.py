@@ -86,7 +86,7 @@ def scenarioAA():
     form = ScenarioForm(choices=choices)
     if form.validate_on_submit():
         answer = form.choice.data
-        game_logic.set_scenario(answer, 10000, 5, 0, 7, 5000, 3, 0, 3)
+        game_logic.set_scenario(answer, -10000, 5, 0, 7, -5000, 3, 0, 3)
         return redirect(url_for('index.scenarioAB'))
     return render_template('scenarioAA.html', form=form, game=game_logic)
 
@@ -96,7 +96,7 @@ def scenarioAB():
     form = ScenarioForm(choices=choices)
     if form.validate_on_submit():
         answer = form.choice.data
-        game_logic.set_scenario(answer, -5000, -5, -2, -2, 0, 2, -1, -1)
+        game_logic.set_scenario(answer, 5000, -5, -2, -2, 0, 2, -1, -1)
         return redirect(url_for('index.scenarioAB'))
     return render_template('scenarioAB.html', form=form, game=game_logic)
 
