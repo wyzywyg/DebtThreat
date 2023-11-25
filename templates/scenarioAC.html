@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Journey</title>
+</head>
+<body>
+    <p>Debt: ${{ game.debt }}</p>
+    <p>Debt Money: ${{ game.debt_money }}</p>
+    <p>Education: {{ game.education }}</p>
+    <p>Health: {{ game.health }}</p>
+    <p>Happiness: {{ game.happiness }}</p>
+    <h1>SCENE 1-C</h1>
+    <p>You're falling behind in one of your classes.</p>
+    
+    <p>
+        Late one evening, you find a message scrawled on a torn piece of paper left on your desk. 
+        "Fall behind and darkness will grow. Catch up, or the pain of failure will consume more than your grades. 
+        Time is ticking, and the consequences are waiting."</p>
+
+    <form method="POST" action="{{ url_for('index.scenarioAC') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            {% for radio in form.choice%}
+                <label>
+                    <button type="radio" name="{{ form.choice.name }}" value="{{ radio.data }}">
+                    {{ radio.label.text }}
+                </label>
+            </button>
+            {% endfor %}
+        </div>
+    </form>
+</body>
+</html>
