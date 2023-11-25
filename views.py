@@ -97,7 +97,7 @@ def scenarioAB():
     if form.validate_on_submit():
         answer = form.choice.data
         game_logic.set_scenario(answer, 5000, -5, -2, -2, 0, 2, -1, -1)
-        return redirect(url_for('index.scenarioAB'))
+        return redirect(url_for('index.scenarioAC'))
     return render_template('scenarioAB.html', form=form, game=game_logic)
 
 @index.route('/scenarioAC', methods=['GET', 'POST'])
