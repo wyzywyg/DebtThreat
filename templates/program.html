@@ -1,23 +1,140 @@
-<!-- Inside templates/program.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose Program</title>
+    <style>
+        body {
+            background-image: url('https://i.ibb.co/f4zFmRR/enlarge-cover.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        @font-face {
+            font-family: Minecraftory;
+            src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
+        }
+
+        h1 {
+            font-family: Minecraftory;
+            text-align: center;
+            color: #ffffff;
+            font-size: 50px;
+        }
+
+        form {
+            display: flex;
+            font-size: 30px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .program-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        label {
+            position: relative;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button {
+            position: relative;
+            padding: 20px;
+            width: 276px; /* Set a width for a rectangular shape */
+            height: 223px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            transition: background 0.3s; /* Smooth transition on hover */
+            transition: opacity 0.3s; /* Smooth transition on hover */
+            overflow: hidden; /* Ensure overflow is hidden to contain the image */
+            background: rgba(139, 0, 0, 0.7); /* DarkRed with reduced opacity */
+        }
+
+        .course-title {
+            position: relative;
+            z-index: 2;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .course-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40%;
+            height: 45%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Images for each program */
+        button[data-program="Civil Engineering"] .course-image {
+            content: url("https://i.ibb.co/pf8Ftx1/px-Art-17.png");
+        }
+
+        button[data-program="Nursing"] .course-image {
+            content: url("https://i.ibb.co/BjmQZSn/px-Art-14.png"); 
+        }
+
+        button[data-program="Computer Science"] .course-image {
+            content: url("https://i.ibb.co/R7tYY0x/Px-Art-12.png");
+        }
+
+        button[data-program="Fine Arts"] .course-image {
+            content: url("https://i.ibb.co/6Pskh3R/px-Art-16.png"); 
+        }
+
+        button:hover .course-title {
+            opacity: 1; /* Show the title on hover */
+        }
+
+        button:hover {
+            opacity: 0.8;
+            background-color: #1d0202;
+        }
+
+        button:hover .course-image {
+            opacity: 0; /* Hide the image on hover */
+        }
+    </style>
 </head>
 <body>
     <h1>Choose Program</h1>
-    <form method="POST" action="{{ url_for('index.program') }}" oninput="updateCost()">
+    <form method="POST" action="{{ url_for('index.program') }}">
         {{ form.hidden_tag() }}
-        <div>
+        <div class="program-options">
+            {% set course_images = {
+                'Civil Engineering': 'path_to_civil_engineering_image.jpg',
+                'Nursing': 'path_to_nursing_image.jpg',
+                'Computer Science': 'path_to_computer_science_image.jpg',
+                'Fine Arts': 'path_to_fine_arts_image.jpg'
+            } %}
+            
             {% for radio in form.program %}
                 <label>
-                    <button type="radio" name="{{ form.program.name }}" value="{{ radio.data }}">
-                    {{ radio.label.text }}
+                    <button type="radio" name="{{ form.program.name }}" value="{{ radio.data }}" data-program="{{ radio.label.text }}">
+                        <img class="course-image" src="{{ course_images[radio.label.text] }}" alt="Course Image">
+                        <div class="course-title">{{ radio.label.text }}</div>
+                    </button>
                 </label>
-            </button>
             {% endfor %}
         </div>
     </form>
