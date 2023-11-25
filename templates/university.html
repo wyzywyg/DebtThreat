@@ -13,49 +13,68 @@
             background-repeat: repeat;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 80vh;
-            margin: 0;
+            height: 100vh;
         }
+
         @font-face {
             font-family: Minecraftory;
             src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
-        }
-        .container {
-            color:white;
-            text-align: center;
         }
 
         h1 {
             font-family: Minecraftory;
             text-align: center;
+            color: #ffffff;
+            font-size: 50px;
+        }
+
+        form {
+            display: flex;
+            font-size: 10px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .program-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        label {
+            position: relative;
+            margin: 10px;
+            cursor: pointer;
         }
 
         button {
             font-family: Minecraftory;
-            width: 150px; 
-            height: 180px; 
-            font-size: 18px;
-            background-color: rgba(139, 0, 0);
-            color:rgb(240, 234, 234);
-            margin: 50px; 
-            padding: 10px;
-            border-style: dashed;
-            border-width: medium;
-            border-color: cornsilk;
+            font-size: medium;
+            color: white;
+            position: relative;
+            padding: 20px;
+            width: 276px; /* Set a width for a rectangular shape */
+            height: 223px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
             border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.2s, background 0.3s; /* Added background transition */
+            background: rgba(139, 0, 0, 0.7);
         }
 
         button:hover {
             transform: scale(1.1);
+            background: rgba(139, 0, 0, 0.9); /* Darker background on hover */
         }
 
         button:active {
-            font-size: 20px;
+            font-size: 20px; /* Adjusted font size on active */
         }
     </style>
 </head>
