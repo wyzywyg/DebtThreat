@@ -18,7 +18,7 @@
 
         @font-face {
             font-family: Minecraftory;
-            src: url(Minercraftory.ttf);
+            src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
         }
 
         @font-face {
@@ -142,7 +142,7 @@
     <center>
         <br><br><br><br><br><br>
         <img src="https://i.ibb.co/j6zC0X3/ezgif-4-241998eeff.gif" height="200" width="190" /> &nbsp; &nbsp;
-        <img src="db.png" height="170" width="800" /><br><br>
+        <img src="{{ url_for('static', filename='db.png') }}" height="170" width="800" /><br><br>
     </center>
     <ul>
         <br><br>
