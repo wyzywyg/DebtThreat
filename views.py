@@ -19,6 +19,11 @@ def new_game():
         return redirect(url_for('index.difficulty'))
     return render_template('new_game.html', form=form)
 
+@index.route('/leaderboard')
+def leaderboard():
+    # Add any necessary cleanup logic here
+    return render_template('leaderboard.html')
+
 @index.route('/quit_game')
 def quit_game():
     # Add any necessary cleanup logic here
