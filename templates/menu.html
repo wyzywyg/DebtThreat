@@ -1,4 +1,3 @@
-<!-- menu.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,59 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Menu</title>
     <style>
-        body {
-            background-image: url('https://i.ibb.co/f4zFmRR/enlarge-cover.png');
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-            background-repeat: repeat;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        
-        h1 {
-            color: white;
-            text-align: center;
-        }
-        
-        ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            flex-direction: column; /* Make buttons vertical */
-            align-items: center;
-        }
-        
-        li {
-            margin: 10px 0;
-        }
-        
-        a {
-            display: block;
-            border-radius: 8px;
-            padding: 15px 20px; /* Set fixed height and width for the buttons */
-            text-align: center;
-            width: 300px;
-            height: 20px;
-            text-decoration: none;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.7); /* Adjust transparency here */
-            transition: background-color 0.3s ease; /* Add smooth transition effect */
-        }
-        
-        a:hover {
-            background-color: rgba(139, 0, 0, 0.9); /* Adjust hover background transparency here */
-        }
-            </style>
-        
+body {
+    background-image: url('https://i.ibb.co/f4zFmRR/enlarge-cover.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+  font-family: Minecraftory;
+  src: url(Minercraftory.ttf);
+}
+
+h1 {
+    font-family: Minecraftory;
+    color: white;
+    text-align: center;
+}
+
+ul {
+    font-family: Minecraftory;
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Make buttons vertical */
+    align-items: center;
+}
+
+li {
+    margin: 10px 0;
+}
+
+a {
+    display: block;
+    border-radius: 8px;
+    padding: 15px 20px; /* Set fixed height and width for the buttons */
+    text-align: center;
+    width: 300px;
+    height: 20px;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust transparency here */
+    transition: background-color 0.3s ease; /* Add smooth transition effect */
+}
+
+a:hover {
+    background-color: rgba(139, 0, 0, 0.9); /* Adjust hover background transparency here */
+}
+#icon-container {
+      position: fixed;
+      top: 30px;
+      right: -4px;
+      cursor: pointer;
+    }
+
+    #icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      transition: transform 0.8s ease;
+    }
+
+    #icon.rotate-icon {
+        transform: rotate(65deg);
+    }
+#mechanics-container {
+      position: fixed;
+      text-align: center;
+      font-family: Minecraftory;
+      font-size: large;
+      color:cornsilk;
+      top: 90px;
+      right: -1100px; /* Initial position outside the viewport */
+      height: 575px;
+      width: 1100px;
+      background-color: rgb(82, 5, 5);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.782);
+      z-index: 500;
+      transition: right 0.3s ease-in-out;
+    }
+
+    #mechanics-container:hover {
+      right: 90px; 
+    }
+    </style>
 </head>
 <body>
+    <div id="icon-container">
+        <div id="icon" onclick="toggleMechanics()"><img src="https://i.ibb.co/FbdmCvp/image-3.png", width="200", height="120"/></div>
+    </div>
+    <center>
+        <br><br><br><br><br><br>
+        <img src="https://i.ibb.co/j6zC0X3/ezgif-4-241998eeff.gif" height="200" width="190"/> &nbsp; &nbsp;
+        <img src="db.png" height= "170" width="800"/><br><br>
+    </center>
     <ul>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <li><a href="{{ url_for('index.new_game') }}">Start New Game</a></li>
-        <li><a href="{{ url_for('index.summary') }}">Leaderboard</a></li>
-        <li><a href="{{ url_for('index.quit_game') }}">Quit Game</a></li>
+        <br><br>
+        <li><a href="{{ url_for('index.new_game') }}">New Game</a></li>
+        <li><a href="#">Leaderboard</a></li>
+        <li><a href="#">Quit Game</a></li>
     </ul>
+    
+      <div id="mechanics-container">
+        <p>MECHANICS</p>
+        <!-- Add your mechanics content here -->
+      </div>
+      
+      <script>
+        function toggleMechanics() {
+            var icon = document.getElementById('icon');
+            var mechanicsContainer = document.getElementById('mechanics-container');
+    
+            // Toggle rotation class
+            icon.classList.toggle('rotate-icon');
+    
+            // Toggle mechanics container visibility
+            mechanicsContainer.style.right = mechanicsContainer.style.right === '90px' ? '-1100px' : '90px';
+        }
+    </script>
+    
 </body>
 </html>
