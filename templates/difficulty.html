@@ -1,25 +1,102 @@
-<!-- Inside templates/difficulty.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choose Difficulty</title>
+    <title>Difficulty</title>
+    <style>
+        body {
+            background-image: url('https://i.ibb.co/f4zFmRR/enlarge-cover.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+        @font-face {
+            font-family: Minecraftory;
+            src: url(Minercraftory.ttf);
+        }
+        .container {
+            font-family: Minecraftory;
+            max-width: 600px;
+            margin-top: 180px;
+            background-color: rgb(82, 5, 5); 
+            border-style: dashed;
+            border-color: cornsilk;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.782);
+        }
+
+        h1 {
+            font-family: Minecraftory;
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.5em;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-family: Minecraftory;
+            display: block;
+            font-size: 2em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .radio-container {
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            display: none; 
+        }
+
+        button {
+            font-family: Minecraftory;
+            background-color: #000000;
+            color: #fff;
+            padding: 10px 20px;
+            width: 150px; /* Set a fixed width for the buttons */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease; /* Add transition for smooth scaling */
+        }
+
+        button:hover {
+            background-color: #1d0202;
+            transform: scale(1.1); /* Enlarge the button on hover */
+        }
+        </style>
 </head>
 <body>
-    <h1>Choose Difficulty</h1>
-    <form method="POST" action="{{ url_for('index.difficulty') }}">
-        {{ form.hidden_tag() }}
-        <div>
+    <div class="container">
+        <h1>General Weighted Average</h1>
+        <form method="POST" action="{{ url_for('index.difficulty') }}">
+            {{ form.hidden_tag() }}
             {% for radio in form.difficulty %}
-                <label>
-                    <button type="radio" name="{{ form.difficulty.name }}" value="{{ radio.data }}">
-                    {{ radio.label.text }}
-                </label>
-            </button>
+                <div class="radio-container">
+                    <label>
+                        <input type="radio" name="{{ form.difficulty.name }}" value="{{ radio.data }}">
+                        <button type="button">{{ radio.label.text }}</button>
+                    </label>
+                </div>
             {% endfor %}
-        </div>
-    </form>
+        </form>
+    </div>
 </body>
 </html>
