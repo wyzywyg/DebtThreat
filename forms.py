@@ -10,7 +10,7 @@ class ScenarioForm(FlaskForm):
             self.choice.choices = choices
             
 class NewGameForm(FlaskForm):
-    name = StringField(validators=[DataRequired()])
+    name = StringField('', validators=[DataRequired()])
     submit = SubmitField('Start New Game')
 
 class DifficultyForm(FlaskForm):
