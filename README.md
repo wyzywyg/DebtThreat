@@ -11,8 +11,7 @@
 
 ### <a name="introduction"></a>
 ## Introduction 💣
-<div align="justify"> Have you ever heard of the 🦋 butterfly effect? It is the idea that seemingly trivial instances can lead to profound and possibly life-altering consequences. In this game often referred to as life, stakes are always high. A simple decision may result to outcomes unforeseen by the layman.
-
+<div align="justify"> Have you ever heard of the 🦋 butterfly effect? It is the idea that seemingly trivial instances can lead to profound and possibly life-altering consequences. In this game often referred to as life, stakes are always high. A simple decision may result to outcomes unforeseen by the layman. <br>
 
 This game is that, just much bloodier.
 
