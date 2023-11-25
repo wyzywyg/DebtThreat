@@ -98,12 +98,12 @@ class GameLogic:
     def set_scenario(self, answer, a_debt_money, a_education, a_health, a_happiness, b_debt_money, b_education, b_health, b_happiness):
         self.answer = answer
         if answer == 'A':
-            self.debt_money -=a_debt_money
+            self.debt_money +=a_debt_money
             self.education += a_education
             self.health += a_health
             self.happiness += a_happiness
         elif answer == 'B':
-            self.debt_money -=b_debt_money
+            self.debt_money +=b_debt_money
             self.education += b_education
             self.health += b_health
             self.happiness += b_happiness
