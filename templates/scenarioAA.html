@@ -1,0 +1,31 @@
+<!-- scenarioAA.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... your head content ... -->
+</head>
+<body>
+    <p>Debt: ${{ game.debt }}</p>
+    <p>Debt Money: ${{ game.debt_money }}</p>
+    <p>Education: {{ game.education }}</p>
+    <p>Health: {{ game.health }}</p>
+    <p>Happiness: {{ game.happiness }}</p>
+    <h1>SCENE 1-1</h1>
+    <p>You start your college journey feeling anxious but determined, and you need textbooks for your classes, but money is tight.</p>
+    
+    <p>The stranger's voice dropped to a chilling whisper, "I've got just what you need. But remember, knowledge comes at a cost. A tiny favor, a mere whisper in the shadows, and these textbooks will be yours. Choose wisely, for some debts can't be paid with mere currency."</p>
+
+    <form method="POST" action="{{ url_for('index.scenarioAA') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            {% for choice, label in form.choice.choices %}
+                <label>
+                    <button type="radio" name="{{ form.choice.name }}" value="{{ choice }}">
+                    {{ label }}
+                </label>
+                    </button>
+            {% endfor %}
+        </div>
+    </form>
+</body>
+</html>
