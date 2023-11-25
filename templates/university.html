@@ -1,25 +1,83 @@
-<!-- Inside templates/university.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose University</title>
+    <style>
+        body {
+            background-image: url('https://i.ibb.co/f4zFmRR/enlarge-cover.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            margin: 0;
+        }
+        @font-face {
+            font-family: Minecraftory;
+            src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
+        }
+        .container {
+            color:white;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: Minecraftory;
+            text-align: center;
+        }
+
+        button {
+            font-family: Minecraftory;
+            width: 150px; 
+            height: 180px; 
+            font-size: 18px;
+            background-color: rgba(139, 0, 0);
+            color:rgb(240, 234, 234);
+            margin: 50px; 
+            padding: 10px;
+            border-style: dashed;
+            border-width: medium;
+            border-color: cornsilk;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        button:active {
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Choose University</h1>
-    <form method="POST" action="{{ url_for('index.university') }}">
-        {{ form.hidden_tag() }}
-        <div>
-            {% for radio in form.university_type %}
-                <label>
-                    <button type="radio" name="{{ form.university_type.name }}" value="{{ radio.data }}">
-                    {{ radio.label.text }}
-                </label>
-            </button>
-            {% endfor %}
-        </div>
-    </form>
+    <div class="container">
+        <h1>Choose University</h1>
+        <form method="POST" action="{{ url_for('index.university') }}">
+            {{ form.hidden_tag() }}
+            <div>
+                {% for radio in form.university_type %}
+                    <label>
+                        <button type="radio" name="{{ form.university_type.name }}" value="{{ radio.data }}">
+                            {% if radio.data == 'public' %}
+                                <span>Public</span> <!-- You can replace this with the icon for 'Public' -->
+                            {% elif radio.data == 'private' %}
+                                <span>Private</span> <!-- You can replace this with the icon for 'Private' -->
+                            {% endif %}
+                        </button>
+                    </label>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
 </body>
 </html>
