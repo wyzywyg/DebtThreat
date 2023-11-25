@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Journey</title>
+</head>
+<body>
+    <p>Debt: ${{ game.debt }}</p>
+    <p>Debt Money: ${{ game.debt_money }}</p>
+    <p>Education: {{ game.education }}</p>
+    <p>Health: {{ game.health }}</p>
+    <p>Happiness: {{ game.happiness }}</p>
+    <h1>SCENE 2-D</h1>
+    <p>You have the option to take on a summer internship, but it means sacrificing some leisure time.</p>
+    
+    <p> "Summer internship: gain or loss? Leisure time will be at stake. Choose your sacrifice."</p>
+
+    <form method="POST" action="{{ url_for('index.scenarioBD') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            {% for radio in form.choice%}
+                <label>
+                    <button type="radio" name="{{ form.choice.name }}" value="{{ radio.data }}">
+                    {{ radio.label.text }}
+                </label>
+            </button>
+            {% endfor %}
+        </div>
+    </form>
+</body>
+</html>
