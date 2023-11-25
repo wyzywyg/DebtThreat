@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Journey</title>
+</head>
+<body>
+    <p>Debt: ${{ game.debt }}</p>
+    <p>Debt Money: ${{ game.debt_money }}</p>
+    <p>Education: {{ game.education }}</p>
+    <p>Health: {{ game.health }}</p>
+    <p>Happiness: {{ game.happiness }}</p>
+    <h1>SCENE 2-A</h1>
+    <p>You have a chance to land a valuable internship related to your field of study.</p>
+    
+    <p>
+        "You have a chance, child. A chance that could either catapult you to a higher level
+        of success or plunge you into the abyss. This internship is not just an opportunity; 
+        it's a test. A test of your dedication, your knowledge, and your ability to sail the 
+        treacherous waters of the real world. Don't underestimate the gravity of this moment, 
+        for the decisions you make now will affect your entire career. Seize it, or let it slip away."
+        </p>
+
+    <form method="POST" action="{{ url_for('index.scenarioBA') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            {% for radio in form.choice%}
+                <label>
+                    <button type="radio" name="{{ form.choice.name }}" value="{{ radio.data }}">
+                    {{ radio.label.text }}
+                </label>
+            </button>
+            {% endfor %}
+        </div>
+    </form>
+</body>
+</html>
