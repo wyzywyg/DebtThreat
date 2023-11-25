@@ -107,7 +107,18 @@ def scenarioAC():
     if form.validate_on_submit():
         answer = form.choice.data
         game_logic.set_scenario(answer, -8000, 5, 2, 2, 0, 2, -3, -2)
-        return redirect(url_for('index.scenarioAC'))
+        return redirect(url_for('index.scenarioAD'))
     return render_template('scenarioAC.html', form=form, game=game_logic)
+
+@index.route('/scenarioAD', methods=['GET', 'POST'])
+def scenarioAD():
+    choices = [('A', 'Apply for part-time job'), ('B', 'Join the workshop')]
+    form = ScenarioForm(choices=choices)
+    if form.validate_on_submit():
+        answer = form.choice.data
+        game_logic.set_scenario(answer, 7000, -10, -2, -3, 0, 10, 2, 3)
+        return redirect(url_for('index.scenarioBA'))
+    return render_template('scenarioAD.html', form=form, game=game_logic)
+
 
 
