@@ -82,7 +82,7 @@ def dorm():
 
 @index.route('/scenarioAA', methods=['GET', 'POST'])
 def scenarioAA():
-    choices = [('A', 'New textbooks Cost: ₱10,000'), ('B', 'Old textbooks Cost: ₱10,000')]
+    choices = [('A', 'Buy New Textbooks'), ('B', 'Buy Used Textbooks Cost')]
     form = ScenarioForm(choices=choices)
     if form.validate_on_submit():
         answer = form.choice.data
