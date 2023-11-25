@@ -106,7 +106,7 @@ Marasigan, Eljay P.
 <p align="center">
 Reyes, Paul Alexis J. 
 <ul>
-	<li>Simp for Mary (he/him) </li>
+	<li>Crush ko si Mary (he/him) </li>
 	<li>INTP</li>
 	<li>Cancer</li>
 	<li>22-00869@g.batstate-u.edu.ph</li>
