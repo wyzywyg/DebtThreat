@@ -23,7 +23,7 @@
         for the decisions you make now will affect your entire career. Seize it, or let it slip away."
         </p>
 
-    <form method="POST" action="{{ url_for('index.scenarioBA') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'BB') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for radio in form.choice%}
