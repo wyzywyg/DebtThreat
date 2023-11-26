@@ -1,34 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>College Journey</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/jzPQFRv/image-removebg-preview-1.png">
+    <style>
+        @font-face {
+            font-family: Minecraftory;
+            src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        body {
+            background-image:url("{{ url_for('static', filename='sceneCC.png') }}");
+            background-attachment: fixed;
+            text-align: right;
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            margin: 0;
+            padding: 0;
+        }
+        .intro-text {
+            font-family: Minecraftory;
+            color: white;
+            font-size: 10px;
+            margin: 20px;
+            padding: 10px;
+            border-style: dashed;
+            border-width: medium;
+            border-color: cornsilk;
+            border-radius: 8px;
+            text-align: center;
+        }
+    
+        progress {
+            width: 20%; /* Set a fixed width for the progress bars */
+            height: 25px;
+            margin-top: 8px;
+            border-radius: 3px;
+            border-style: solid;
+            border-color: white;
+            display: block;
+        }
+    
+        .progress-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+    
+        .progress-name {
+            font-family: Minecraftory;
+            color: aliceblue;
+            font-size: 13px;
+            margin-left: 15px;
+            margin-right: 15px;
+            min-width: 120px; /* Set a minimum width for the progress names */
+        }
+    
+        .progress-value {
+            font-family: Minecraftory;
+            color: aliceblue;
+            font-size: 10px;
+            margin-left: 10px;
+        }
+    
+        .debt-progress::-webkit-progress-value {
+            background:black;
+        }
+    
+        .debt-money-progress::-webkit-progress-value {
+            background: red;
+        }
+    
+        .education-progress::-webkit-progress-value {
+            background: blue;
+        }
+    
+        .health-progress::-webkit-progress-value {
+            background: green;
+        }
+    
+        .happiness-progress::-webkit-progress-value {
+            background: yellow;
+        }
+        button {
+            font-family: Minecraftory;
+            width: 180px; 
+            height: 150px; 
+            font-size: 18px;
+            background-color: rgba(139, 0, 0);
+            color:rgb(240, 234, 234);
+            margin: 80px; 
+            padding: 10px;
+            border-style: dashed;
+            border-width: medium;
+            border-color: cornsilk;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            animation: fadeIn 2s; 
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        button:active {
+            font-size: 20px;
+        }
+    </style>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Journey</title>
 </head>
 <body>
-    <p>Debt: ${{ game.debt }}</p>
-    <p>Debt Money: ${{ game.debt_money }}</p>
-    <p>Education: {{ game.education }}</p>
-    <p>Health: {{ game.health }}</p>
-    <p>Happiness: {{ game.happiness }}</p>
-    <h1>SCENE 3-C</h1>
-    <p>Your significant other is pressuring you to spend more time together, but your studies are demanding. 
-    </p>
+    <div class="intro-text">
+        Your significant other is pressuring you to spend more time together, but your studies are demanding.
+        </div>
     
-    <p>"As your significant other, I feel the distance growing, the overwhelming demands of your studies pulling 
-        us apart. I yearn for more of your time, a request echoing against the demands of your academic pursuits. 
-        How do we cross this challenging path, balancing the time between us and the unyielding pressures of your studies?" </p>
-
+    <div class="progress-container">
+        <span class="progress-name">Debt Money:</span>
+        <progress class="debt-money-progress" value="{{ game.debt_money }}" max="500000">{{ game.debt_money }}</progress>
+        <span class="progress-value">{{ game.debt_money }}</span>
+    </div>
+    <div class="progress-container">
+        <span class="progress-name">Education:</span>
+        <progress class="education-progress" value="{{ game.education }}" max="100">{{ game.education }}</progress>
+        <span class="progress-value">{{ game.education }}</span>
+    </div>
+    <div class="progress-container">
+        <span class="progress-name">Health:</span>
+        <progress class="health-progress" value="{{ game.health }}" max="100">{{ game.health }}</progress>
+        <span class="progress-value">{{ game.health }}</span>
+    </div>
+    <div class="progress-container">
+        <span class="progress-name">Happiness:</span>
+        <progress class="happiness-progress" value="{{ game.happiness }}" max="100">{{ game.happiness }}</progress>
+        <span class="progress-value">{{ game.happiness }}</span>
+    </div>
     <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'CD') }}">
         {{ form.hidden_tag() }}
         <div>
-            {% for radio in form.choice%}
+            {% for choice, label in form.choice.choices %}
                 <label>
-                    <button type="radio" name="{{ form.choice.name }}" value="{{ radio.data }}">
-                    {{ radio.label.text }}
+                    <button type="radio" name="{{ form.choice.name }}" value="{{ choice }}" style="font-size: 16px; padding: 10px;">
+                        {{ label }}
+                    </button>
                 </label>
-            </button>
             {% endfor %}
         </div>
     </form>
