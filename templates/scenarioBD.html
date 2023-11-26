@@ -17,7 +17,7 @@
     
     <p> "Summer internship: gain or loss? Leisure time will be at stake. Choose your sacrifice."</p>
 
-    <form method="POST" action="{{ url_for('index.scenarioBD') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'CA') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for radio in form.choice%}
