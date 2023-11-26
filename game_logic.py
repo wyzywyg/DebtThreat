@@ -96,29 +96,23 @@ class GameLogic:
             self.dorm_type = dorm_type
         # Deduct the chosen dorm type's cost from debt_money and set as the new.
 
-    def check_and_deduct(self):
-        if self.education <= 10:
-            self.debt_money -= 10000
-            self.messages.append("Warning: Your education is dangerously low!")
-
-        if self.health <= 10:
-            self.debt_money -= 10000
-            self.messages.append("Warning: Your health is dangerously low!")
-
-        if self.happiness <= 10:
-            self.debt_money -= 10000
-            self.messages.append("Warning: Your happiness is dangerously low!")
-
     def set_scenario(self, answer, debt_money_delta, education_delta, health_delta, happiness_delta):
         self.answer = answer
-        self.debt_money += debt_money_delta
-        self.education += education_delta
-        self.health += health_delta
-        self.happiness += happiness_delta
+        if answer == 'A':
+            self.debt_money += debt_money_delta
+            self.education += education_delta
+            self.health += health_delta
+            self.happiness += happiness_delta
+        elif answer == 'B':
+            self.debt_money +=debt_money_delta
+            self.education += education_delta
+            self.health += health_delta
+            self.happiness += happiness_delta
             
         # Ensure that the points don't exceed 100
         self.education = min(self.education, 100)
         self.health = min(self.health, 100)
         self.happiness = min(self.happiness, 100)
         
-        self.check_and_deduct()
+        if self.health <= 10:
+            self.debt_money -= 10000
