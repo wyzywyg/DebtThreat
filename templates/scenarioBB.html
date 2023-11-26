@@ -19,7 +19,7 @@
         Consider this a warning, ignore self-care, for the consequences could be far more 
         sinister than you can imagine."</p>
 
-    <form method="POST" action="{{ url_for('index.scenarioBB') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'BC') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for radio in form.choice%}
