@@ -18,7 +18,7 @@
     <p>"A family emergency has arisen, requiring immediate money. Time is of the essence, 
         and the cost is steep. Brace yourself for your wallet is about to fill."</p>
 
-    <form method="POST" action="{{ url_for('index.scenarioCA') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'CB') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for radio in form.choice%}
