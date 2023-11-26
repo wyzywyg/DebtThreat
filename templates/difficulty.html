@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choose University</title>
+    <title>Debt Threat</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/jzPQFRv/image-removebg-preview-1.png">
     <style>
         body {
@@ -18,7 +18,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             height: 100vh;
         }
 
@@ -32,97 +32,120 @@
             100% { opacity: 1; }
         }
 
+        .container {
+            font-family: Minecraftory;
+            max-width: 600px;
+            margin-top: 60px;
+            background-color: rgb(82, 5, 5);
+            border-style: dashed;
+            border-color: cornsilk;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.782);
+            animation: fadeIn 2s; 
+            display: flex;
+        }
+
+        .container2 {
+            font-family: Minecraftory;
+            width: 600px;
+            margin-top: 10px;
+            background-color: rgb(82, 5, 5);
+            border-style: dashed;
+            border-color: cornsilk;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.782);
+            animation: fadeIn 2s; 
+        }
+
+
+        .left-container {
+            width:20%;
+
+        }
+        .right-container {
+            width:80%;
+            box-sizing: border-box;
+        }
+
+        .right-container p {
+            font-size: 10px;
+            text-align: justify;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
         h1 {
             font-family: Minecraftory;
             text-align: center;
             color: #ffffff;
-            font-size: 50px;
+            font-size: 1.5em;
+            margin-top: 20px;
         }
 
-        form {
+        .radio-container {
             display: flex;
-            font-size: 30px;
             flex-direction: column;
             align-items: center;
+            margin-top: 10px;
         }
 
         label {
-            position: relative;
-            margin: 10px;
-            cursor: pointer;
+            font-family: Minecraftory;
+            font-size: 0.5em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            display: none;
         }
 
         button {
-            position: relative;
-            padding: 20px;
-            width: 276px;
-            height: 223px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            transition: background 0.3s, opacity 0.3s;
-            background: rgba(139, 0, 0, 0.7);
-            animation: fadeIn 2s;
-        }
-
-        .university-title {
-            position: relative;
             font-family: Minecraftory;
-            z-index: 2;
-            color: white;
-            opacity: 1;
-            transition: opacity 0.3s;
-        }
-
-        .university-image {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 59%;
-            height: 70%;
-            object-fit: cover;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        button[data-university="Public"] .university-image {
-            content: url("https://i.ibb.co/1RXb56r/image-removebg-preview-2.png");
-        }
-
-        button[data-university="Private"] .university-image {
-            content: url("https://i.ibb.co/qWMCvvJ/image-removebg-preview-3-1.png");
-        }
-
-        button:hover .university-title {
-            opacity: 0;
-        }
-
-        button:hover .university-image {
-            opacity: 1;
+            background-color: #000000;
+            color: #fff;
+            padding: 10px 20px;
+            width: 200px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: block;
+            margin-bottom: 10px;
         }
 
         button:hover {
-            opacity: 0.8;
-            background-color: #1d0202;
+            color:black;
+            background-color: white;
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    <h1>Choose University</h1>
-    <form method="POST" action="{{ url_for('index.university') }}">
+    <div class="container">
+        <div class="left-container">
+            <img src="https://i.ibb.co/HN1Rchm/ezgif-com-crop.gif" width="90px" height="130px">
+        </div>
+        <div class="right-container">
+            <p>Welcome {{ game.player_name }}, You are a student from a low-class family in the Philippines, desperate to pursue a college degree and secure a job that will suffice all your necessities. However, the only way for you to be able to study is to get a student loan worth 500,000 from a criminal syndicate. Your goal is to finish your chosen program while also using your monetary loan frugally and pay off this debt in your first job salary. Otherwise, yours and your family's life will be at stake.</p>
+        </div>
+    </div>
+    <div class="container2">
+    <h1>Choose your mode</h1>
+    <form method="POST" action="{{ url_for('index.difficulty') }}">
         {{ form.hidden_tag() }}
-        <div class="program-options">
-            {% for radio in form.university_type %}
+        <div class="radio-container">
+            {% for radio in form.difficulty %}
                 <label>
-                    <button type="radio" name="{{ form.university_type.name }}" value="{{ radio.data }}" data-university="{{ radio.label.text }}">
-                        <div class="university-title">{{ radio.label.text }}</div>
-                        <img class="university-image" src="" alt="University Image">
+                    <button type="radio" name="{{ form.difficulty.name }}" value="{{ radio.data }}">
+                        {{ radio.label.text }}
                     </button>
                 </label>
             {% endfor %}
         </div>
+    </div>
     </form>
 </body>
 </html>
