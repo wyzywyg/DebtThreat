@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Journey</title>
+</head>
+<body>
+    <p>Debt: ${{ game.debt }}</p>
+    <p>Debt Money: ${{ game.debt_money }}</p>
+    <p>Education: {{ game.education }}</p>
+    <p>Health: {{ game.health }}</p>
+    <p>Happiness: {{ game.happiness }}</p>
+    <h1>SCENE 3-B</h1>
+    <p>You have the chance to participate in a research program abroad, enhancing your academic profile.</p>
+    
+    <p>"As your professor, I present a crucial proposition, the chance to join a research program abroad, a 
+        unique path to level up your academic standing. The decision rests in your hands.”</p>
+
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'CC') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            {% for radio in form.choice%}
+                <label>
+                    <button type="radio" name="{{ form.choice.name }}" value="{{ radio.data }}">
+                    {{ radio.label.text }}
+                </label>
+            </button>
+            {% endfor %}
+        </div>
+    </form>
+</body>
+</html>

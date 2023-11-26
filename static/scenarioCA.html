@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Journey</title>
+</head>
+<body>
+    <p>Debt: ${{ game.debt }}</p>
+    <p>Debt Money: ${{ game.debt_money }}</p>
+    <p>Education: {{ game.education }}</p>
+    <p>Health: {{ game.health }}</p>
+    <p>Happiness: {{ game.happiness }}</p>
+    <h1>SCENE 3-A</h1>
+    <p>You have a family emergency and it requires immediate financial assistance. </p>
+    
+    <p>"A family emergency has arisen, requiring immediate money. Time is of the essence, 
+        and the cost is steep. Brace yourself for your wallet is about to fill."</p>
+
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'CB') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            {% for radio in form.choice%}
+                <label>
+                    <button type="radio" name="{{ form.choice.name }}" value="{{ radio.data }}">
+                    {{ radio.label.text }}
+                </label>
+            </button>
+            {% endfor %}
+        </div>
+    </form>
+</body>
+</html>
