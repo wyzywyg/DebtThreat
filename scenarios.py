@@ -1,7 +1,7 @@
 # scenarios.py
 
 SCENARIO_DATA = {
-    'AA': {'options': [('A', 'Buy New Textbooks'), ('B', 'Buy Used Textbooks Cost')],
+    'AA': {'options': [('A', 'Buy New Textbooks'), ('B', 'Buy Used Textbooks')],
            'outcomes': {'A': (-10000, 5, 0, 7), 'B': (-5000, 3, 0, 3)}},
 
     'AB': {'options': [('A', 'Accept'), ('B', 'Decline')],
