@@ -21,7 +21,7 @@
         will hunt you."
         </p>
 
-    <form method="POST" action="{{ url_for('index.scenarioBC') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'BC') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for radio in form.choice%}
