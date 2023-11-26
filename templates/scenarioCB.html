@@ -18,7 +18,7 @@
     <p>"As your professor, I present a crucial proposition, the chance to join a research program abroad, a 
         unique path to level up your academic standing. The decision rests in your hands.”</p>
 
-    <form method="POST" action="{{ url_for('index.scenarioCB') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'CC') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for radio in form.choice%}
