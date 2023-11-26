@@ -8,14 +8,14 @@
             font-family: Minecraftory;
             src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
         }
-    
+
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
-
+    
         body {
-            background-image:url("{{ url_for('static', filename='sceneBD.png') }}");
+            background-image:url("{{ url_for('static', filename='sceneBB.png') }}");
             background-attachment: fixed;
             text-align: right;
             background-size: cover;
@@ -122,7 +122,7 @@
 </head>
 <body>
     <div class="intro-text">
-        You have the option to take on a summer internship, but it means sacrificing some leisure time.
+        Your health is starting to suffer due to stress and a lack of proper self-care.
     </div>
     
     <div class="progress-container">
@@ -145,7 +145,7 @@
         <progress class="happiness-progress" value="{{ game.happiness }}" max="100">{{ game.happiness }}</progress>
         <span class="progress-value">{{ game.happiness }}</span>
     </div>
-    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'CA') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'BC') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for choice, label in form.choice.choices %}
