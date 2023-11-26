@@ -77,97 +77,23 @@ def dorm():
     if form.validate_on_submit():
         dorm_type = form.dorm_type.data
         game_logic.set_dorm(dorm_type)
-        return redirect(url_for('index.scenarioAA'))
+        return redirect(url_for('index.scenarios', scenario_key= 'AA'))
     return render_template('dorm.html', form=form)
 
-@index.route('/scenarioAA', methods=['GET', 'POST'])
-def scenarioAA():
-    choices = [('A', 'Buy New Textbooks'), ('B', 'Buy Used Textbooks')]
-    form = ScenarioForm(choices=choices)
-    if form.validate_on_submit():
-        answer = form.choice.data
-        game_logic.set_scenario(answer, -10000, 5, 0, 7, -5000, 3, 0, 3)
-        return redirect(url_for('index.scenarioAB'))
-    return render_template('scenarioAA.html', form=form, game=game_logic)
+@index.route('/scenarios/scenario<scenario_key>', methods=['GET', 'POST'])
+def scenarios(scenario_key):
+    scenario_data = SCENARIO_DATA.get(scenario_key)
 
-@index.route('/scenarioAB', methods=['GET', 'POST'])
-def scenarioAB():
-    choices = [('A', 'Accept'), ('B', 'Decline')]
-    form = ScenarioForm(choices=choices)
-    if form.validate_on_submit():
-        answer = form.choice.data
-        game_logic.set_scenario(answer, 5000, -5, -2, -2, 0, 2, -1, -1)
-        return redirect(url_for('index.scenarioAC'))
-    return render_template('scenarioAB.html', form=form, game=game_logic)
+    if scenario_data:
+        choices = scenario_data['options']
+        form = ScenarioForm(choices=choices)
 
-@index.route('/scenarioAC', methods=['GET', 'POST'])
-def scenarioAC():
-    choices = [('A', 'Hire a Tutor'), ('B', 'Self-study')]
-    form = ScenarioForm(choices=choices)
-    if form.validate_on_submit():
-        answer = form.choice.data
-        game_logic.set_scenario(answer, -8000, 5, 2, 2, 0, 2, -3, -2)
-        return redirect(url_for('index.scenarioAD'))
-    return render_template('scenarioAC.html', form=form, game=game_logic)
+        if form.validate_on_submit():
+            answer = form.choice.data
+            game_logic.set_scenario(answer, *scenario_data['outcomes'][answer])
+            return redirect(url_for('index.scenarios', scenario_key=scenario_key))  # Include scenario_key parameter
 
-@index.route('/scenarioAD', methods=['GET', 'POST'])
-def scenarioAD():
-    choices = [('A', 'Apply for part-time job'), ('B', 'Join the workshop')]
-    form = ScenarioForm(choices=choices)
-    if form.validate_on_submit():
-        answer = form.choice.data
-        game_logic.set_scenario(answer, 7000, -10, -2, -3, 0, 10, 2, 3)
-        return redirect(url_for('index.scenarioBA'))
-    return render_template('scenarioAD.html', form=form, game=game_logic)
+        return render_template(f'scenario{scenario_key}.html', form=form, game=game_logic)
 
-@index.route('/scenarioBA', methods=['GET', 'POST'])
-def scenarioBA():
-    choices = [('A', 'Accept'), ('B', 'Decline')]
-    form = ScenarioForm(choices=choices)
-    if form.validate_on_submit():
-        answer = form.choice.data
-        game_logic.set_scenario(answer, 0, 15, 0, 5, 5000, -15, -3, 2)
-        return redirect(url_for('index.scenarioBB'))
-    return render_template('scenarioBA.html', form=form, game=game_logic)
-
-@index.route('/scenarioBB', methods=['GET', 'POST'])
-def scenarioBB():
-    choices = [('A', 'Invest in gym membership'), ('B', 'Focus on Academics')]
-    form = ScenarioForm(choices=choices)
-    if form.validate_on_submit():
-        answer = form.choice.data
-        game_logic.set_scenario(answer, -5000, 0, 5, 5, 0, 3, -3, -5)
-        return redirect(url_for('index.scenarioBC'))
-    return render_template('scenarioBB.html', form=form, game=game_logic)
-
-@index.route('/scenarioBC', methods=['GET', 'POST'])
-def scenarioBC():
-    choices = [('A', 'Attend event'), ('B', 'Skip event')]
-    form = ScenarioForm(choices=choices)
-    if form.validate_on_submit():
-        answer = form.choice.data
-        game_logic.set_scenario(answer, -5000, 7, -2, 5, 0, 3, 2, -5)
-        return redirect(url_for('index.scenarioBD'))
-    return render_template('scenarioBC.html', form=form, game=game_logic)
-
-@index.route('/scenarioBD', methods=['GET', 'POST'])
-def scenarioBD():
-    choices = [('A', 'Take summer internship'), ('B', 'Take summer vacation')]
-    form = ScenarioForm(choices=choices)
-    if form.validate_on_submit():
-        answer = form.choice.data
-        game_logic.set_scenario(answer, 7000, 7, 5, 5, -5000, -7, 5, 5)
-        return redirect(url_for('index.scenarioCA'))
-    return render_template('scenarioBD.html', form=form, game=game_logic)
-
-@index.route('/scenarioCA', methods=['GET', 'POST'])
-def scenarioCA():
-    choices = [('A', 'Use Loan'), ('B', 'Prioritize on Studies')]
-    form = ScenarioForm(choices=choices)
-    if form.validate_on_submit():
-        answer = form.choice.data
-        game_logic.set_scenario(answer, -15000, -10, 5, 15, 0, 5, -7, -10)
-        return redirect(url_for('index.scenarioCB'))
-    return render_template('scenarioCA.html', form=form, game=game_logic)
-
+    return redirect(url_for('index.home'))  # Redirect to home if scenario_key is not found
 
