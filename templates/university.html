@@ -41,15 +41,9 @@
 
         form {
             display: flex;
-            font-size: 10px;
+            font-size: 30px;
             flex-direction: column;
             align-items: center;
-        }
-
-        .program-options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         label {
@@ -59,59 +53,76 @@
         }
 
         button {
-            font-family: Minecraftory;
-            font-size: medium;
-            color: white;
             position: relative;
             padding: 20px;
-            width: 276px; /* Set a width for a rectangular shape */
+            width: 276px;
             height: 223px;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
             border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s; /* Added background transition */
+            transition: background 0.3s, opacity 0.3s;
             background: rgba(139, 0, 0, 0.7);
-            animation: fadeIn 2s; 
+            animation: fadeIn 2s;
         }
 
-        .course-title {
+        .university-title {
             position: relative;
+            font-family: Minecraftory;
             z-index: 2;
             color: white;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .university-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 59%;
+            height: 70%;
+            object-fit: cover;
+            z-index: 1;
             opacity: 0;
             transition: opacity 0.3s;
         }
 
-        button:hover {
-            transform: scale(1.1);
-            background: rgba(50, 0, 0, 0.7); /* Darker background on hover */
+        button[data-university="Public"] .university-image {
+            content: url("https://i.ibb.co/1RXb56r/image-removebg-preview-2.png");
         }
 
-        button:active {
-            font-size: 20px; /* Adjusted font size on active */
+        button[data-university="Private"] .university-image {
+            content: url("https://i.ibb.co/qWMCvvJ/image-removebg-preview-3-1.png");
+        }
+
+        button:hover .university-title {
+            opacity: 0;
+        }
+
+        button:hover .university-image {
+            opacity: 1;
+        }
+
+        button:hover {
+            opacity: 0.8;
+            background-color: #1d0202;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Choose University</h1>
-        <form method="POST" action="{{ url_for('index.university') }}">
-            {{ form.hidden_tag() }}
-            <div>
-                {% for radio in form.university_type %}
-                    <label>
-                        <button type="radio" name="{{ form.university_type.name }}" value="{{ radio.data }}">
-                            {% if radio.data == 'public' %}
-                                <span>Public</span> <!-- You can replace this with the icon for 'Public' -->
-                            {% elif radio.data == 'private' %}
-                                <span>Private</span> <!-- You can replace this with the icon for 'Private' -->
-                            {% endif %}
-                        </button>
-                    </label>
-                {% endfor %}
-            </div>
-        </form>
-    </div>
+    <h1>Choose University</h1>
+    <form method="POST" action="{{ url_for('index.university') }}">
+        {{ form.hidden_tag() }}
+        <div class="program-options">
+            {% for radio in form.university_type %}
+                <label>
+                    <button type="radio" name="{{ form.university_type.name }}" value="{{ radio.data }}" data-university="{{ radio.label.text }}">
+                        <div class="university-title">{{ radio.label.text }}</div>
+                        <img class="university-image" src="" alt="University Image">
+                    </button>
+                </label>
+            {% endfor %}
+        </div>
+    </form>
 </body>
 </html>
