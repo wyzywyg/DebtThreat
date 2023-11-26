@@ -26,6 +26,11 @@
             font-family: Minecraftory;
             src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
         }
+        
+         @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
 
         h1 {
             font-family: Minecraftory;
@@ -65,6 +70,7 @@
             transition: opacity 0.3s; /* Smooth transition on hover */
             overflow: hidden; /* Ensure overflow is hidden to contain the image */
             background: rgba(139, 0, 0, 0.7); /* DarkRed with reduced opacity */
+            animation: fadeIn 2s; 
         }
 
         .course-title {
