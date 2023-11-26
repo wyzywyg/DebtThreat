@@ -17,7 +17,18 @@
             margin: 0;
             padding: 0;
         }
-    
+        .intro-text {
+            font-family: Minecraftory;
+            color: white;
+            font-size: 10px;
+            margin: 20px;
+            padding: 10px;
+            border-style: dashed;
+            border-width: medium;
+            border-color: cornsilk;
+            border-radius: 8px;
+            text-align: center;
+        }
         progress {
             width: 20%; /* Set a fixed width for the progress bars */
             height: 25px;
@@ -97,6 +108,9 @@
     
 </head>
 <body>
+    <div class="intro-text">
+        You're falling behind in one of your classes. Late one evening, you find a message scrawled on a torn piece of paper left on your desk.  
+    </div>
     <div class="progress-container">
         <span class="progress-name">Debt Money:</span>
         <progress class="debt-money-progress" value="{{ game.debt_money }}" max="500000">{{ game.debt_money }}</progress>
