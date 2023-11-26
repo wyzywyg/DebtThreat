@@ -12,17 +12,17 @@
     <p>Education: {{ game.education }}</p>
     <p>Health: {{ game.health }}</p>
     <p>Happiness: {{ game.happiness }}</p>
-    <h1>SCENE 4-A</h1>
-    <p>As you approach the end of your senior year, you realize that your laptop, 
-    essential for your studies and job applications, is outdated and struggling to keep up with demands.
+    <h1>SCENE 4-B</h1>
+    <p>You have the opportunity to attend a high-profile professional development seminar. 
     </p>
     
     <p>
-        "You there, at the edge of graduation! Your outdated laptop won't survive the challenges ahead. 
-        Upgrade, or face the consequences of being left behind."
+        "This is not just a seminar; it's a path of success. Attend the high-profile professional 
+        development seminar or remain forever trapped in inferiority." 
+        
         </p>
 
-    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'DB') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'DC') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for radio in form.choice%}
