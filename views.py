@@ -78,7 +78,7 @@ def dorm():
     if form.validate_on_submit():
         dorm_type = form.dorm_type.data
         game_logic.set_dorm(dorm_type)
-        return redirect(url_for('index.scenarios', scenario_key= 'AA', scenario_next_key=''))
+        return redirect(url_for('index.scenarios', scenario_key= 'AA', scenario_next_key='AA'))
     return render_template('dorm.html', form=form)
 
 @index.route('/scenarios/<scenario_key>/next<scenario_next_key>', methods=['GET', 'POST'])
