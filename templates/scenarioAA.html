@@ -119,7 +119,7 @@
         <progress class="happiness-progress" value="{{ game.happiness }}" max="100">{{ game.happiness }}</progress>
         <span class="progress-value">{{ game.happiness }}</span>
     </div>
-    <form method="POST" action="{{ url_for('index.scenarioAA') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'AB') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for choice, label in form.choice.choices %}
