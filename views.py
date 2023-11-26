@@ -78,11 +78,11 @@ def dorm():
     if form.validate_on_submit():
         dorm_type = form.dorm_type.data
         game_logic.set_dorm(dorm_type)
-        return redirect(url_for('index.scenarios', scenario_key= 'AA'))
+        return redirect(url_for('index.scenarios', scenario_key= 'AA', scenario_next_key=''))
     return render_template('dorm.html', form=form)
 
-@index.route('/scenarios/scenario<scenario_key>', methods=['GET', 'POST'])
-def scenarios(scenario_key):
+@index.route('/scenarios/<scenario_key>/next<scenario_next_key>', methods=['GET', 'POST'])
+def scenarios(scenario_key, scenario_next_key):
     scenario_data = SCENARIO_DATA.get(scenario_key)
 
     if scenario_data:
@@ -92,9 +92,9 @@ def scenarios(scenario_key):
         if form.validate_on_submit():
             answer = form.choice.data
             game_logic.set_scenario(answer, *scenario_data['outcomes'][answer])
-            return redirect(url_for('index.scenarios', scenario_key=scenario_key))  # Include scenario_key parameter
+            return redirect(url_for('index.scenarios', scenario_key=scenario_next_key, scenario_next_key=scenario_next_key))  # Include scenario_key parameter
 
-        return render_template(f'scenario{scenario_key}.html', form=form, game=game_logic)
+        return render_template(f'scenario{scenario_next_key}.html', form=form, game=game_logic)
 
     return redirect(url_for('index.home'))  # Redirect to home if scenario_key is not found
 
