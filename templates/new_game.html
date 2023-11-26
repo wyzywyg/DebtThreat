@@ -107,8 +107,9 @@
     <div class="container">
        
         <form method="POST" action="{{ url_for('index.new_game') }}">
+            <center>
+            <img src="https://i.ibb.co/j6zC0X3/ezgif-4-241998eeff.gif" height="150" width="140" /> </center>
             <h1>NEW GAME</h1>
-            <h2>Enter Username:</h2>
             {{ form.hidden_tag() }}
             {{ form.name.label }}
             {{ form.name(placeholder='Player Name') }}
