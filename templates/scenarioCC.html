@@ -20,7 +20,7 @@
         us apart. I yearn for more of your time, a request echoing against the demands of your academic pursuits. 
         How do we cross this challenging path, balancing the time between us and the unyielding pressures of your studies?" </p>
 
-    <form method="POST" action="{{ url_for('index.scenarioCC') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'CD') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for radio in form.choice%}
