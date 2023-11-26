@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for
 from forms import NewGameForm, DifficultyForm, UniversityForm, ProgramForm, DormForm, ScenarioForm
 from game_logic import GameLogic
+from scenarios import SCENARIO_DATA
 
 index = Blueprint('index', __name__)
 
@@ -36,7 +37,7 @@ def difficulty():
         difficulty = form.difficulty.data
         game_logic.set_difficulty(difficulty)
         return redirect(url_for('index.university'))
-    return render_template('difficulty.html', form=form)
+    return render_template('difficulty.html', form=form, game=game_logic)
 
 @index.route('/university', methods=['GET', 'POST'])
 def university():
@@ -96,4 +97,6 @@ def scenarios(scenario_key):
         return render_template(f'scenario{scenario_key}.html', form=form, game=game_logic)
 
     return redirect(url_for('index.home'))  # Redirect to home if scenario_key is not found
+
+
 
