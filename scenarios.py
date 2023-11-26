@@ -36,6 +36,17 @@ SCENARIO_DATA = {
 
     'CD': {'options': [('A', 'Invest savings'), ('B', 'Research and plan')],
            'outcomes': {'A': (-30000, 15, -5, 5), 'B': (-5000, 5, -3, 3)}},
+    
+    'DA': {'options': [('A', 'Buy new laptop'), ('B', 'Stick with current laptop')],
+           'outcomes': {'A': (-50000, 10, 0, 5), 'B': (0, 2, 0, -2)}},
 
+    'DB': {'options': [('A', 'Attend'), ('B', 'Decline')],
+           'outcomes': {'A': (-25000, 10, 5, 5), 'B': (10000, -10, -5, -5)}},
+
+    'DC': {'options': [('A', 'Enroll to the course'), ('B', 'Self-study')],
+           'outcomes': {'A': (-35000, 10, -5, 5), 'B': (0, 2, -2, -3)}},
+
+    'DD': {'options': [('A', 'Purchase new regalia'), ('B', 'Rent a set of regalia')],
+           'outcomes': {'A': (-15000, 0, 0, 5), 'B': (-7500, 0, 0, 2)}},
     # Add more scenarios as needed...
 }
