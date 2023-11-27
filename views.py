@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for
-from forms import NewGameForm, DifficultyForm, UniversityForm, ProgramForm, DormForm, ScenarioForm
+from forms import NewGameForm, DifficultyForm, UniversityForm, ProgramForm, DormForm, ScenarioForm, ScenarioResultForm
 from game_logic import GameLogic
 from scenarios import SCENARIO_DATA
 
@@ -9,6 +9,7 @@ game_logic = GameLogic()
 
 @index.route('/')
 def home():
+    game_logic.__init__()
     return render_template('menu.html')
 
 @index.route('/new_game', methods=['GET', 'POST'])
@@ -81,7 +82,7 @@ def dorm():
         return redirect(url_for('index.scenarios', scenario_key= 'AA', scenario_next_key='AA'))
     return render_template('dorm.html', form=form)
 
-@index.route('/scenarios/<scenario_key>/next<scenario_next_key>', methods=['GET', 'POST'])
+@index.route('/scenarios/<scenario_key>/<scenario_next_key>', methods=['GET', 'POST'])
 def scenarios(scenario_key, scenario_next_key):
     scenario_data = SCENARIO_DATA.get(scenario_key)
 
@@ -98,5 +99,25 @@ def scenarios(scenario_key, scenario_next_key):
 
     return redirect(url_for('index.home'))  # Redirect to home if scenario_key is not found
 
+@index.route('/scenarios/<scenario_key>', methods=['GET', 'POST'])
+def get_result(scenario_key):
+    scenario_data = SCENARIO_DATA.get(scenario_key)
+
+    if scenario_data:
+        choices = scenario_data['options']
+        form = ScenarioForm(choices=choices)
+
+        if form.validate_on_submit():
+            answer = form.choice.data
+            game_logic.set_scenario(answer, *scenario_data['outcomes'][answer])
+            return redirect(url_for('index.result'))  # Include scenario_key parameter
+
+        return render_template(f'scenario{scenario_key}.html', form=form, game=game_logic)
+
+    return redirect(url_for('index.home'))  # Redirect to home if scenario_key is not found
 
 
+@index.route('/scenarios', methods=['GET', 'POST'])
+def result():
+    game_logic.set_result()
+    return render_template('result.html', game=game_logic)
