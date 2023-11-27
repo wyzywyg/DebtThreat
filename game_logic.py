@@ -12,6 +12,10 @@ class GameLogic:
         self.health = 0
         self.happiness = 0
         self.messages = []
+        self.final_score = 0
+        self.result = ""
+        self.salary = 0
+        self.money = 0
 
     def initialize(self, player_name):
         self.player_name = player_name
@@ -116,3 +120,28 @@ class GameLogic:
         
         if self.health <= 10:
             self.debt_money -= 10000
+
+    def set_result(self):
+        self.final_score = self.education + self.health + self.happiness
+        
+        if self.education in range(0, 20):
+            self.salary =  25000
+        elif self.education in range(21, 40):
+            self.salary =  35000
+        elif self.education in range(41, 60):
+            self.salary =  40000
+        elif self.education in range(61, 80):
+            self.salary =  50000
+        elif 81 <= self.education <= 100:
+            self.salary =  75000
+        
+        self.money = self.salary * 6 + self.debt_money
+        
+        if self.money > self.debt:
+            self.result = "Win"
+            
+        if self.money < self.debt: 
+            self.result = "Lose"
+        
+    
+    
