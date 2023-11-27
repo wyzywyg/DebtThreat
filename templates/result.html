@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Menu</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/jzPQFRv/image-removebg-preview-1.png">
+    <style>
+        body {
+            background-image: url('https://i.ibb.co/f4zFmRR/enlarge-cover.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;s
+            background-repeat: repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: Minecraftory;
+            src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
+        }
+
+        @font-face {
+            font-family: Creepster;
+            src: url('https://fonts.gstatic.com/s/creepster/v10/AlZy_zVJHMWrLl7uA2T82A.ttf');
+        }
+
+        h1 {
+            font-family: Minecraftory;
+            color: white;
+            text-align: center;
+        }
+
+        ul {
+            font-family: Minecraftory;
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            display: block;
+            border-radius: 8px;
+            padding: 15px 20px;
+            text-align: center;
+            width: 300px;
+            height: 20px;
+            text-decoration: none;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: rgba(139, 0, 0, 0.9);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <br><br>
+        <h1> {{ game.result}} </h1>
+        <h1> Your Salary per month is  {{ game.salary}} you work for 6 months</h1>
+        <h1> Your remaining debt money is  {{ game.debt_money}} </h1>
+        <h1> You now have {{ game.money}} </h1>
+        <h1> Final Score </h1>
+        <h1> {{ game.final_score}} </h1>
+
+    </div>
+    <ul>
+        <br><br>
+        <li><a href="{{ url_for('index.home') }}">Menu</a></li>
+    </ul>
+</body>
+
+</html>
