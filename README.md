@@ -84,7 +84,7 @@ Banaag, Vince Clyde S.
 <p align="center">
 De Jose, Mary Kristine A. 
 <ul>
-	<li>dynamite with a lasermbeam (she/her) </li>
+	<li>dynamite with a laser beam (she/her) </li>
 	<li>ISTP</li>
 	<li>Gemini</li>
 	<li>22-03865@g.batstate-u.edu.ph</li>
