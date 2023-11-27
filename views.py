@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for
-from forms import NewGameForm, DifficultyForm, UniversityForm, ProgramForm, DormForm, ScenarioForm, ScenarioResultForm
+from forms import NewGameForm, DifficultyForm, UniversityForm, ProgramForm, DormForm, ScenarioForm
 from game_logic import GameLogic
 from scenarios import SCENARIO_DATA
 
