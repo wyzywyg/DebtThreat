@@ -32,7 +32,7 @@ class Account:
                 self.cursor = self.db.cursor()
             else:
                 raise  # Re-raise the exception for other operational errors
-            
+
     def create_database(self):
         """Create the database if it doesn't exist."""
         self.db = pymysql.connect(
@@ -45,18 +45,42 @@ class Account:
 
         try:
             self.cursor.execute(create_database_query)
+
+            # Grant privileges on the database to the user 'jaron'
+            grant_privileges_query = "GRANT ALL PRIVILEGES ON debt_threat.* TO 'jaron'@'localhost'"
+            self.cursor.execute(grant_privileges_query)
+
+            # Commit the changes
+            self.db.commit()
+
             self.cursor.close()  # Close the cursor after creating the database
             print("Database created successfully.")
         except pymysql.Error as e:
             print(f"Error creating database: {e}")
             raise  # Re-raise the exception to see the full error details
 
-    def save_name(self, username):
-        """Save a user's username 'users' table."""
+    def create_users_table(self):
+        """Create the 'users' table if it doesn't exist."""
+        create_table_query = """
+        CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(255),
+            final_score INT
+        )
+        """
         try:
-            # Insert the username and final score into the 'users' table
+            self.cursor.execute(create_table_query)
+            print("Table 'users' created successfully.")
+        except pymysql.Error as e:
+            print(f"Error creating 'users' table: {e}")
+            raise  # Re-raise the exception to see the full error details
+
+    def save_name(self, username):
+        """Save a user's username in the 'users' table."""
+        try:
+            # Insert the username into the 'users' table
             insert_query = "INSERT INTO users (username) VALUES (%s)"
-            self.cursor.execute(insert_query, (username))
+            self.cursor.execute(insert_query, (username,))
             self.db.commit()  # Commit the changes to the database
 
         except pymysql.Error as e:
@@ -64,17 +88,17 @@ class Account:
             print(f"Error saving user: {e}")
 
     def save_final_score(self, final_score):
-        """Save a user's final 'users' table."""
+        """Save a user's final score in the 'users' table."""
         try:
-            # Insert the username and final score into the 'users' table
+            # Insert the final score into the 'users' table
             insert_query = "INSERT INTO users (final_score) VALUES (%s)"
-            self.cursor.execute(insert_query, (final_score))
+            self.cursor.execute(insert_query, (final_score,))
             self.db.commit()  # Commit the changes to the database
 
         except pymysql.Error as e:
             self.db.rollback()  # Rollback the changes in case of an error
-            print(f"Error saving user: {e}")           
-    
+            print(f"Error saving final score: {e}")
+
     def fetch_leaderboard_data(self):
         """Fetch leaderboard data from the 'users' table."""
         try:
