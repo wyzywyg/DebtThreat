@@ -1,3 +1,7 @@
+
+from account import Account
+account = Account()
+
 class GameLogic:
     def __init__(self):
         self.player_name = ""
@@ -19,6 +23,7 @@ class GameLogic:
 
     def initialize(self, player_name):
         self.player_name = player_name
+        
 
     def set_difficulty(self, difficulty):
         self.difficulty = difficulty
@@ -123,7 +128,6 @@ class GameLogic:
 
     def set_result(self):
         self.final_score = self.education + self.health + self.happiness
-        
         if self.education in range(0, 20):
             self.salary =  25000
         elif self.education in range(21, 40):
@@ -139,9 +143,12 @@ class GameLogic:
         
         if self.money > self.debt:
             self.result = "Win"
+            account.save_name(self.player_name)
+            account.save_final_score(self.final_score)
             
         if self.money < self.debt: 
             self.result = "Lose"
+            account.save_name(self.player_name)
+            account.save_final_score(self.final_score)
         
-    
-    
+            
