@@ -143,12 +143,11 @@ class GameLogic:
         
         if self.money > self.debt:
             self.result = "Win"
-            account.save_name(self.player_name)
-            account.save_final_score(self.final_score)
+            account.save_user_data(self.player_name, self.final_score)
             
         if self.money < self.debt: 
             self.result = "Lose"
-            account.save_name(self.player_name)
-            account.save_final_score(self.final_score)
+            account.save_user_data(self.player_name, self.final_score)
+            
         
             
