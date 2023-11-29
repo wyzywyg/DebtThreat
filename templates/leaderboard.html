@@ -1,3 +1,5 @@
+<!-- leaderboard.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
     <style>
+         @font-face {
+            font-family: Minecraftory;
+            src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
         body {
             background-image: url('https://i.ibb.co/f4zFmRR/enlarge-cover.png');
             background-attachment: fixed;
@@ -74,15 +85,15 @@
                 <th>Score</th>
             </tr>
         </thead>
-            <tbody>
-                {% for index, player in enumerate(players) %}
-                    <tr>
-                        <td>{{ index + 1 }}</td>
-                        <td>{{ player.username }}</td>
-                        <td>{{ player.final_score }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
+        <tbody>
+            {% for player in players %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ player['username'] }}</td>
+                    <td>{{ player['final_score'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
     <a href="{{ url_for('index.home') }}">Back to Menu</a>
 </body>
