@@ -74,18 +74,18 @@ class Account:
         except pymysql.Error as e:
             print(f"Error creating 'users' table: {e}")
             raise  # Re-raise the exception to see the full error details
-            
+                
     def save_user_data(self, username, final_score):
-            """Save a user's data (username and final score) in the 'users' table."""
-            try:
-                # Insert the username and final score into the 'users' table
-                insert_query = "INSERT INTO users (username, final_score) VALUES (%s, %s)"
-                self.cursor.execute(insert_query, (username, final_score))
-                self.db.commit()  # Commit the changes to the database
+        """Save a user's data (username and final score) in the 'users' table."""
+        try:
+            # Insert the username and final score into the 'users' table
+            insert_query = "INSERT INTO users (username, final_score) VALUES (%s, %s)"
+            self.cursor.execute(insert_query, (username, final_score))
+            self.db.commit()  # Commit the changes to the database
 
-            except pymysql.Error as e:
-                self.db.rollback()  # Rollback the changes in case of an error
-                print(f"Error saving user data: {e}")
+        except pymysql.Error as e:
+            self.db.rollback()  # Rollback the changes in case of an error
+            print(f"Error saving user data: {e}")
 
     def fetch_leaderboard_data(self):
         """Fetch leaderboard data from the 'users' table."""
@@ -98,7 +98,7 @@ class Account:
             rows = self.cursor.fetchall()
 
             # Convert the list of tuples to a list of dictionaries
-            leaderboard_data = [{'username': row[0], 'final_score': row[0]} for row in rows]
+            leaderboard_data = [{'username': row[0], 'final_score': row[1]} for row in rows]
 
             return leaderboard_data
 
