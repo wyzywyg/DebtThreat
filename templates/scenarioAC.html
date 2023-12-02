@@ -3,6 +3,25 @@
 <head>
     <title>College Journey</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/jzPQFRv/image-removebg-preview-1.png">
+    <audio id="clickSound" src="{{ url_for('static', filename='Common_SFX.mp3') }}"></audio>
+
+    <script>
+        var clickSound;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            clickSound = new Audio("{{ url_for('static', filename='Common_SFX.mp3') }}");
+            
+            var buttons = document.querySelectorAll('button');
+            buttons.forEach(function(button) {
+                button.addEventListener('click', playClickSound);
+            });
+        });
+
+        function playClickSound() {
+            clickSound.play();
+        }
+    </script>
+
     <style>
         @font-face {
             font-family: Minecraftory;
@@ -20,7 +39,7 @@
         }
 
         body {
-            background-image:url("{{ url_for('static', filename='sceneAB.jpg') }}");
+            background-image:url("{{ url_for('static', filename='sceneAC.jpg') }}");
             background-attachment: fixed;
             text-align: right;
             background-size: cover;
@@ -140,7 +159,7 @@
         }
 
         .whisper-container::before {
-            content: "A single task, five hours of your time, and ₱5,000 will be yours. No questions, no second chances. The choice is yours, but be warned: once you accept, there's no turning back.";
+            content: "Fall behind and darkness will grow. Catch up, or the pain of failure will consume more than your grades. Time is ticking, and the consequences are waiting.";
             animation: typing 5s steps(100, end), fadeIn 2s forwards;
             white-space: pre-line; /* Preserve newlines in the text */
         }
@@ -150,7 +169,7 @@
 <body>
 
     <div class="intro-text">
-        You receive a one-time job offer near your school that pays ₱5,000 but requires 5 hours of work.
+        You're falling behind in one of your classes. One late evening, you find a message scrawled on a torn piece of paper left on your desk.  
 
     </div>
 
@@ -174,14 +193,14 @@
         <progress class="happiness-progress" value="{{ game.happiness }}" max="100">{{ game.happiness }}</progress>
         <span class="progress-value">{{ game.happiness }}</span>
     </div>
-    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'AB', scenario_next_key = 'AC') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'AC', scenario_next_key = 'AD') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for choice, label in form.choice.choices %}
                 <label>
-                    <button type="radio" name="{{ form.choice.name }}" value="{{ choice }}" style="font-size: 16px; padding: 10px;">
+                    <button type="radio" name="{{ form.choice.name }}" value="{{ choice }}" style="font-size: 16px; padding: 10px;" onclick="playClickSound()">
                         {{ label }}
-                    </button>
+                    </button>      
                 </label>
             {% endfor %}
         </div>
