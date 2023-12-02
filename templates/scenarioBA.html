@@ -8,14 +8,19 @@
             font-family: Minecraftory;
             src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
         }
-        
+
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
-        
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
         body {
-            background-image:url("{{ url_for('static', filename='sceneBA.png') }}");
+            background-image:url("{{ url_for('static', filename='sceneBA.jpg') }}");
             background-attachment: fixed;
             text-align: right;
             background-size: cover;
@@ -24,6 +29,7 @@
             margin: 0;
             padding: 0;
         }
+
         .intro-text {
             font-family: Minecraftory;
             color: white;
@@ -36,7 +42,7 @@
             border-radius: 8px;
             text-align: center;
         }
-    
+
         progress {
             width: 20%; /* Set a fixed width for the progress bars */
             height: 25px;
@@ -46,13 +52,13 @@
             border-color: white;
             display: block;
         }
-    
+
         .progress-container {
             display: flex;
             align-items: center;
             margin-bottom: 3px;
         }
-    
+
         .progress-name {
             font-family: Minecraftory;
             color: aliceblue;
@@ -61,33 +67,34 @@
             margin-right: 15px;
             min-width: 120px; /* Set a minimum width for the progress names */
         }
-    
+
         .progress-value {
             font-family: Minecraftory;
             color: aliceblue;
             font-size: 10px;
             margin-left: 10px;
         }
-    
+
         .debt-progress::-webkit-progress-value {
             background:black;
         }
-    
+
         .debt-money-progress::-webkit-progress-value {
             background: red;
         }
-    
+
         .education-progress::-webkit-progress-value {
             background: blue;
         }
-    
+
         .health-progress::-webkit-progress-value {
             background: green;
         }
-    
+
         .happiness-progress::-webkit-progress-value {
             background: yellow;
         }
+
         button {
             font-family: Minecraftory;
             width: 180px; 
@@ -113,18 +120,39 @@
         button:active {
             font-size: 20px;
         }
+        .whisper-container {
+            position: fixed;
+            bottom: 40px;
+            right: 20px;
+            width: 1000px;
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-family: Minecraftory;
+            font-size: 20px;
+            text-align: left;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 2s forwards; /* Apply the fadeIn animation */
+            white-space: pre-line; /* Preserve newlines in the text */
+            overflow: hidden; /* Hide the overflow text */
+        }
+
+        .whisper-container::before {
+            content: "You have a chance, child. A chance that could either catapult you to a higher level of success or plunge you into the abyss. This internship is not just an opportunity; it's a test. Seize it, or let it slip away.";
+            animation: typing 5s steps(100, end), fadeIn 2s forwards;
+            white-space: pre-line; /* Preserve newlines in the text */
+        }
     </style>
     
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Journey</title>
 </head>
 <body>
+
     <div class="intro-text">
         You have a chance to land a valuable internship related to your field of study.
     </div>
-    
+
     <div class="progress-container">
         <span class="progress-name">Debt Money:</span>
         <progress class="debt-money-progress" value="{{ game.debt_money }}" max="500000">{{ game.debt_money }}</progress>
@@ -157,5 +185,6 @@
             {% endfor %}
         </div>
     </form>
+    <div class="whisper-container"></div>
 </body>
 </html>
