@@ -10,6 +10,7 @@ account = Account()
 game_logic = GameLogic()
 @index.route('/')
 def home():
+    account.create_users_table()
     game_logic.__init__()
     return render_template('menu.html')
 
