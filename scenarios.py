@@ -25,7 +25,7 @@ SCENARIO_DATA = {
     'BD': {'options': [('A', 'Take summer internship'), ('B', 'Take summer vacation')],
            'outcomes': {'A': (7000, 7, 5, 5), 'B': (-5000, -7, 5, 5)}},
     
-    'CA': {'options': [('A', 'Use loan'), ('B', 'Prioritize studies')],
+    'CA': {'options': [('A', 'Pay with your loan'), ('B', 'Prioritize studies')],
            'outcomes': {'A': (-15000, 10, 5, 15), 'B': (0, 5, -7, -10)}},
 
     'CB': {'options': [('A', 'Accept'), ('B', 'Decline')],
