@@ -31,10 +31,10 @@ SCENARIO_DATA = {
     'CB': {'options': [('A', 'Accept'), ('B', 'Decline')],
            'outcomes': {'A': (-85000, 15, 0, 5), 'B': (0, 5, 0, 5)}},
 
-    'CC': {'options': [('A', 'Dedicate time on relationship'), ('B', 'Prioritize studies')],
+    'CC': {'options': [('A', 'Time on relationship'), ('B', 'Prioritize studies')],
            'outcomes': {'A': (-10000, -10, 5, 5), 'B': (0, 10, -5, -5)}},
 
-    'CD': {'options': [('A', 'Invest savings'), ('B', 'Research and plan')],
+    'CD': {'options': [('A', 'Invest savings'), ('B', 'Research')],
            'outcomes': {'A': (-30000, 15, -5, 5), 'B': (-5000, 5, -3, 3)}},
     
     'DA': {'options': [('A', 'Buy new laptop'), ('B', 'Stick with current laptop')],
