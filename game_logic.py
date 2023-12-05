@@ -45,23 +45,22 @@ class GameLogic:
             self.health += 10
             self.happiness += 10
         elif difficulty == 'hardcore':
-            self.education += 0 
-            self.health += 0
-            self.happiness += 0
+            self.education += 5
+            self.health += 5
+            self.happiness += 5
         # Adjust points in education, health, and happiness based on the chosen difficulty
 
     def set_university(self, university_type):
-        
         self.university_type = university_type
-        # Add points based on the chosen university type
-        if self.university_type == 'public':
-            self.education += 15
-            self.health += 5
-            self.happiness += 10
-        elif self.university_type == 'private':
-            self.education += 20
-            self.health += 10
-            self.happiness += 15
+        
+        if university_type == 'public':
+                self.education += 15
+                self.health += 5
+                self.happiness += 10
+        elif university_type == 'private':
+                self.education += 20
+                self.health += 10
+                self.happiness += 15
 
     def set_program(self, program):
         program_costs = {
@@ -99,7 +98,7 @@ class GameLogic:
             self.dorm_type = dorm_type
         # Deduct the chosen dorm type's cost from debt_money and set as the new.
 
-   def set_scenario(self, answer, debt_money_cost, education_cost, health_cost, happiness_cost):
+    def set_scenario(self, answer, debt_money_cost, education_cost, health_cost, happiness_cost):
         self.answer = answer
         self.debt_money_cost = debt_money_cost
         self.education_cost = education_cost
@@ -141,12 +140,15 @@ class GameLogic:
         
         if self.money > self.debt:
             self.result = "Win"
+            account.create_users_table()
             account.save_user_data(self.player_name, self.final_score)
+            account.fetch_leaderboard_data()
             
         if self.money < self.debt: 
             self.result = "Lose"
+            account.create_users_table()
             account.save_user_data(self.player_name, self.final_score)
+            account.fetch_leaderboard_data()
             
-    def get_leaderboard(self):
-        leaderboard_data = account.fetch_leaderboard_data()
-        return leaderboard_data
+        
+            
