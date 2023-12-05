@@ -19,7 +19,7 @@ SCENARIO_DATA = {
            'outcomes': {'A': (0, 15, 5, 5), 'B': (5000, -15, -3, 2)}},
 
     'BB': {'options': [('A', 'Invest in gym membership'), ('B', 'Focus on Academics')],
-           'outcomes': {'A': (-5000, 0, 15, 5), 'B': (0, 3, -3, -5)}},
+           'outcomes': {'A': (-15000, -5, 15, 5), 'B': (0, 5, -3, -5)}},
 
     'BC': {'options': [('A', 'Attend event'), ('B', 'Skip event')],
            'outcomes': {'A': (-5000, 7, -2, 5), 'B': (0, 3, 10, -5)}},
