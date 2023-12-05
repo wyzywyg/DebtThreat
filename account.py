@@ -1,5 +1,4 @@
 import pymysql
-
 class Account:
 
     def __init__(self):
@@ -59,28 +58,110 @@ class Account:
             print(f"Error creating database: {e}")
             raise  # Re-raise the exception to see the full error details
 
-    def create_users_table(self):
-        """Create the 'users' table if it doesn't exist."""
-        create_table_query = """
-        CREATE TABLE IF NOT EXISTS users (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(255),
-            final_score INT
+    def create_database(self):
+        """Create the database if it doesn't exist."""
+        self.db = pymysql.connect(
+            host="localhost",
+            user="jaron",
+            password="admin"
         )
-        """
+        self.cursor = self.db.cursor()
+        create_database_query = "CREATE DATABASE IF NOT EXISTS debt_threat"  # Use the correct database name
+
         try:
-            self.cursor.execute(create_table_query)
-            print("Table 'users' created successfully.")
+            self.cursor.execute(create_database_query)
+
+            # Grant privileges on the database to the user 'jaron'
+            grant_privileges_query = "GRANT ALL PRIVILEGES ON debt_threat.* TO 'jaron'@'localhost'"
+            self.cursor.execute(grant_privileges_query)
+
+            # Commit the changes
+            self.db.commit()
+
+            self.cursor.close()  # Close the cursor after creating the database
+            print("Database created successfully.")
         except pymysql.Error as e:
-            print(f"Error creating 'users' table: {e}")
+            print(f"Error creating database: {e}")
             raise  # Re-raise the exception to see the full error details
-                
-    def save_user_data(self, username, final_score):
-        """Save a user's data (username and final score) in the 'users' table."""
+            
+    def create_users_table(self):
+        """Create the 'users' table if it doesn't exist and also create related tables."""
+        try:
+            # Create the 'users' table if it doesn't exist
+            create_users_table_query = """
+            CREATE TABLE IF NOT EXISTS users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                username VARCHAR(255),
+                final_score INT
+            )
+            """
+            self.cursor.execute(create_users_table_query)
+            print("Table 'users' created successfully.")
+
+            # Create the 'player_info' table if it doesn't exist
+            create_player_info_table_query = """
+            CREATE TABLE IF NOT EXISTS player_info (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                user_id INT,
+                player_name VARCHAR(255),
+                difficulty VARCHAR(255),
+                university_type VARCHAR(255),
+                program VARCHAR(255),
+                dorm_type VARCHAR(255),
+                FOREIGN KEY (user_id) REFERENCES users (id)
+            )
+            """
+            self.cursor.execute(create_player_info_table_query)
+            print("Table 'player_info' created successfully.")
+
+            # Create the 'user_stats' table if it doesn't exist
+            create_user_stats_table_query = """
+            CREATE TABLE IF NOT EXISTS user_stats (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                user_id INT,
+                debt INT,
+                debt_money INT,
+                education INT,
+                health INT,
+                happiness INT,
+                FOREIGN KEY (user_id) REFERENCES users (id)
+            )
+            """
+            self.cursor.execute(create_user_stats_table_query)
+            print("Table 'user_stats' created successfully.")
+
+            # Commit the changes
+            self.db.commit()
+
+        except pymysql.Error as e:
+            print(f"Error creating tables: {e}")
+            self.db.rollback()  # Rollback the changes in case of an error
+            raise  # Re-raise the exception to see the full error details
+            
+    def save_user_data(self, player_name, final_score, difficulty, university_type, program, dorm_type,
+                       debt, debt_money, education, health, happiness):
+        """Save user data in 'users', 'player_info', and 'user_stats' tables."""
         try:
             # Insert the username and final score into the 'users' table
-            insert_query = "INSERT INTO users (username, final_score) VALUES (%s, %s)"
-            self.cursor.execute(insert_query, (username, final_score))
+            insert_user_query = "INSERT INTO users (username, final_score) VALUES (%s, %s)"
+            self.cursor.execute(insert_user_query, (player_name, final_score))
+            user_id = self.cursor.lastrowid  # Get the last inserted user_id (primary key)
+
+            # Insert player info into 'player_info' table using the user_id as a foreign key
+            insert_player_info_query = (
+                "INSERT INTO player_info (user_id, player_name, difficulty, university_type, program, dorm_type) "
+                "VALUES (%s, %s, %s, %s, %s, %s)"
+            )
+            self.cursor.execute(insert_player_info_query, (user_id, player_name, difficulty, university_type,
+                                                           program, dorm_type))
+
+            # Insert user stats into 'user_stats' table using the user_id as a foreign key
+            insert_user_stats_query = (
+                "INSERT INTO user_stats (user_id, debt, debt_money, education, health, happiness) "
+                "VALUES (%s, %s, %s, %s, %s, %s)"
+            )
+            self.cursor.execute(insert_user_stats_query, (user_id, debt, debt_money, education, health, happiness))
+
             self.db.commit()  # Commit the changes to the database
 
         except pymysql.Error as e:
