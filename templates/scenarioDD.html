@@ -133,9 +133,10 @@
             font-family: Minecraftory;
             font-size: 20px;
             text-align: left;
-            animation: fadeIn 2s forwards;
-            white-space: pre-line;
-            overflow: hidden;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 2s forwards; /* Apply the fadeIn animation */
+            white-space: pre-line; /* Preserve newlines in the text */
+            overflow: hidden; /* Hide the overflow text */
         }
 
         .whisper-container::before {
@@ -152,7 +153,7 @@
         The culmination of your hard work has arrived. What attire do you plan to wear on this momentous occasion?
     </div>
 
-    <div class="progress-container">
+   <div class="progress-container">
         <span class="progress-name">Debt Money:</span>
         <progress class="debt-money-progress" value="{{ game.debt_money }}" max="500000">{{ game.debt_money }}</progress>
         <span class="progress-value">{{ game.debt_money }}</span>
@@ -172,7 +173,7 @@
         <progress class="happiness-progress" value="{{ game.happiness }}" max="100">{{ game.happiness }}</progress>
         <span class="progress-value">{{ game.happiness }}</span>
     </div>
-    <form method="POST" action="{{ url_for('index.get_result', scenario_key='DD') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'AA', scenario_next_key = 'AB') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for choice, label in form.choice.choices %}
@@ -184,6 +185,6 @@
             {% endfor %}
         </div>
     </form>
-    
+    <div class="whisper-container"></div>
 </body>
 </html>
