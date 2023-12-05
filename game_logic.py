@@ -150,5 +150,7 @@ class GameLogic:
             account.save_user_data(self.player_name, self.final_score)
             account.fetch_leaderboard_data()
             
-        
+    def get_leaderboard(self):
+        leaderboard_data = account.fetch_leaderboard_data()
+        return leaderboard_data
             
