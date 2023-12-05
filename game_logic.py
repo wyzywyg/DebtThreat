@@ -15,11 +15,15 @@ class GameLogic:
         self.education = 0
         self.health = 0
         self.happiness = 0
-        self.messages = []
+        self.messages = None
         self.final_score = 0
         self.result = ""
         self.salary = 0
         self.money = 0
+        self.debt_money_cost = 0
+        self.education_cost = 0
+        self.health_cost = 0
+        self.happiness_cost = 0
 
     def initialize(self, player_name):
         self.player_name = player_name
