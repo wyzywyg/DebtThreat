@@ -33,49 +33,39 @@ class GameLogic:
             self.health += 20
             self.happiness += 20
         elif difficulty == 'normal':
-            self.education += 10
-            self.health += 10
-            self.happiness += 10
+            self.education += 15
+            self.health += 15
+            self.happiness += 15
         elif difficulty == 'hard':
-            self.education -= 10
-            self.health -= 10
-            self.happiness -= 10
+            self.education += 5
+            self.health += 5
+            self.happiness += 5
         elif difficulty == 'hardcore':
-            self.education -= 20
-            self.health -= 20
-            self.happiness -= 20
+            self.education += 0 
+            self.health += 0
+            self.happiness += 0
         # Adjust points in education, health, and happiness based on the chosen difficulty
 
     def set_university(self, university_type):
-        if self.difficulty in ['easy', 'normal', 'hard']:
-            # Allow the user to choose between public and private university options
-            self.university_type = university_type
-
-            # Add points based on the chosen university type
-            if university_type == 'public':
-                self.education += 10
-                self.health += 10
-                self.happiness += 10
-            elif university_type == 'private':
-                self.education += 20
-                self.health += 20
-                self.happiness += 20
-
-        elif self.difficulty == 'hardcore':
-            # Limit the user to choose private university only
-            self.university_type = 'private'
-
-            # Add points for hardcore difficulty and private university
-            self.education += 30
-            self.health += 30
-            self.happiness += 30
+        
+        self.university_type = university_type
+        # Add points based on the chosen university type
+        if self.university_type == 'public':
+            self.education += 10
+            self.health += 0
+            self.happiness += 0
+        elif self.university_type == 'private':
+            self.education += 20
+            self.health += 10
+            self.happiness += 15
 
     def set_program(self, program):
         program_costs = {
             'public': {
                 'easy': {'civil_engineering': 60000, 'nursing': 80000, 'computer_science': 40000, 'fine_arts': 80000},
                 'normal': {'civil_engineering': 80000, 'nursing': 100000, 'computer_science': 60000, 'fine_arts': 100000},
-                'hard': {'civil_engineering': 120000, 'nursing': 140000, 'computer_science': 100000, 'fine_arts': 140000}
+                'hard': {'civil_engineering': 120000, 'nursing': 140000, 'computer_science': 100000, 'fine_arts': 140000},
+                'hardcore': {'civil_engineering': 140000, 'nursing': 160000, 'computer_science': 120000, 'fine_arts': 160000}
             },
             'private': {
                 'easy': {'civil_engineering': 80000, 'nursing': 100000, 'computer_science': 60000, 'fine_arts': 100000},
@@ -128,15 +118,16 @@ class GameLogic:
 
     def set_result(self):
         self.final_score = self.education + self.health + self.happiness
-        if self.education in range(0, 20):
+        
+        if self.final_score in range(0, 80):
             self.salary =  25000
-        elif self.education in range(21, 40):
+        elif self.final_score in range(81, 150):
             self.salary =  35000
-        elif self.education in range(41, 60):
+        elif self.final_score in range(151, 199):
             self.salary =  40000
-        elif self.education in range(61, 80):
+        elif self.final_score in range(200, 249):
             self.salary =  50000
-        elif 81 <= self.education <= 100:
+        elif self.final_score in range(250, 500):
             self.salary =  75000
         
         self.money = self.salary * 6 + self.debt_money
@@ -145,9 +136,10 @@ class GameLogic:
             self.result = "Win"
             account.save_user_data(self.player_name, self.final_score)
             
-        if self.money < self.debt: 
+        elif self.money < self.debt:
             self.result = "Lose"
             account.save_user_data(self.player_name, self.final_score)
-            
-        
-            
+             
+    def get_leaderboard(self):
+        leaderboard_data = account.fetch_leaderboard_data()
+        return leaderboard_data
