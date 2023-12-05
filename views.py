@@ -1,11 +1,11 @@
+#views.py
+
 from flask import Blueprint, render_template, redirect, url_for
 from forms import NewGameForm, DifficultyForm, UniversityForm, ProgramForm, DormForm, ScenarioForm
 from game_logic import GameLogic
 from scenarios import SCENARIO_DATA
-from account import Account
 
 index = Blueprint('index', __name__)
-account = Account()
 
 game_logic = GameLogic()
 @index.route('/')
@@ -25,9 +25,9 @@ def new_game():
 
 @index.route('/leaderboard')
 def leaderboard():
-    leaderboard_data = account.fetch_leaderboard_data()
+    leaderboard_data = game_logic.get_leaderboard()
     return render_template('leaderboard.html', players=leaderboard_data)
-    
+     
 @index.route('/quit_game')
 def quit_game():
     # Add any necessary cleanup logic here
