@@ -37,9 +37,9 @@ class GameLogic:
             self.health += 15
             self.happiness += 15
         elif difficulty == 'hard':
-            self.education += 5
-            self.health += 5
-            self.happiness += 5
+            self.education += 10
+            self.health += 10
+            self.happiness += 10
         elif difficulty == 'hardcore':
             self.education += 0 
             self.health += 0
@@ -51,9 +51,9 @@ class GameLogic:
         self.university_type = university_type
         # Add points based on the chosen university type
         if self.university_type == 'public':
-            self.education += 10
-            self.health += 0
-            self.happiness += 0
+            self.education += 15
+            self.health += 5
+            self.happiness += 10
         elif self.university_type == 'private':
             self.education += 20
             self.health += 10
