@@ -1,22 +1,29 @@
+#account.py
+
 import pymysql
 class Account:
 
     def __init__(self):
+        self.host = "localhost"
+        self.user = "jaron"
+        self.password = "admin"
+        self.database = "debt_threat"
         self.current_user = None
         self.db = None
         self.cursor = None
         self.connect_to_database()
         self.create_users_table()
-        self.host="localhost"
-        self.user="jaron"
-        self.password="admin"
-        self.database="debt_threat" 
 
     def connect_to_database(self):
         """Connect to the database or create one if it doesn't exist."""
         try:
-            self.db = pymysql.connect(self)
-            self.cursor = self.db.cursor()
+            self.db = pymysql.connect(
+            host=self.host,
+            user=self.user,
+            password=self.password,
+            database=self.database
+            )
+            self.cursor = self.db.cursor()   
         except pymysql.OperationalError as e:
             if e.args[0] == 1049:  # MySQL error code 1049 corresponds to "Unknown database"
                 self.create_database()
