@@ -153,7 +153,7 @@
         You have a family emergency and it requires immediate financial assistance.
     </div>
 
-    <div class="progress-container">
+   <div class="progress-container">
         <span class="progress-name">Debt Money:</span>
         <progress class="debt-money-progress" value="{{ game.debt_money }}" max="500000">{{ game.debt_money }}</progress>
         <span class="progress-value">{{ game.debt_money }}</span>
@@ -173,7 +173,7 @@
         <progress class="happiness-progress" value="{{ game.happiness }}" max="100">{{ game.happiness }}</progress>
         <span class="progress-value">{{ game.happiness }}</span>
     </div>
-    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'CA', scenario_next_key = 'CB') }}">
+    <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'AA', scenario_next_key = 'AB') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for choice, label in form.choice.choices %}
