@@ -7,26 +7,25 @@ class Account:
         self.cursor = None
         self.connect_to_database()
         self.create_users_table()
+        self.host="localhost"
+        self.user="jaron"
+        self.password="admin"
+        self.database="debt_threat" 
 
     def connect_to_database(self):
         """Connect to the database or create one if it doesn't exist."""
         try:
-            self.db = pymysql.connect(
-                host="localhost",
-                user="jaron",
-                password="admin",
-                database="debt_threat"  # Use the correct database name
-            )
+            self.db = pymysql.connect(self)
             self.cursor = self.db.cursor()
         except pymysql.OperationalError as e:
             if e.args[0] == 1049:  # MySQL error code 1049 corresponds to "Unknown database"
                 self.create_database()
                 # Reconnect to the newly created database
                 self.db = pymysql.connect(
-                    host="localhost",
-                    user="jaron",
-                    password="admin",
-                    database="debt_threat"  # Use the correct database name
+                    host=self.host,
+                    user=self.user,
+                    password=self.password,
+                    database=self.database
                 )
                 self.cursor = self.db.cursor()
             else:
@@ -35,35 +34,9 @@ class Account:
     def create_database(self):
         """Create the database if it doesn't exist."""
         self.db = pymysql.connect(
-            host="localhost",
-            user="jaron",
-            password="admin"
-        )
-        self.cursor = self.db.cursor()
-        create_database_query = "CREATE DATABASE IF NOT EXISTS debt_threat"  # Use the correct database name
-
-        try:
-            self.cursor.execute(create_database_query)
-
-            # Grant privileges on the database to the user 'jaron'
-            grant_privileges_query = "GRANT ALL PRIVILEGES ON debt_threat.* TO 'jaron'@'localhost'"
-            self.cursor.execute(grant_privileges_query)
-
-            # Commit the changes
-            self.db.commit()
-
-            self.cursor.close()  # Close the cursor after creating the database
-            print("Database created successfully.")
-        except pymysql.Error as e:
-            print(f"Error creating database: {e}")
-            raise  # Re-raise the exception to see the full error details
-
-    def create_database(self):
-        """Create the database if it doesn't exist."""
-        self.db = pymysql.connect(
-            host="localhost",
-            user="jaron",
-            password="admin"
+            host=self.host,
+            user=self.user,
+            password=self.password
         )
         self.cursor = self.db.cursor()
         create_database_query = "CREATE DATABASE IF NOT EXISTS debt_threat"  # Use the correct database name
