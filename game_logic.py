@@ -95,18 +95,22 @@ class GameLogic:
             self.dorm_type = dorm_type
         # Deduct the chosen dorm type's cost from debt_money and set as the new.
 
-    def set_scenario(self, answer, debt_money_delta, education_delta, health_delta, happiness_delta):
+   def set_scenario(self, answer, debt_money_cost, education_cost, health_cost, happiness_cost):
         self.answer = answer
+        self.debt_money_cost = debt_money_cost
+        self.education_cost = education_cost
+        self.health_cost = health_cost
+        self.happiness_cost = happiness_cost
         if answer == 'A':
-            self.debt_money += debt_money_delta
-            self.education += education_delta
-            self.health += health_delta
-            self.happiness += happiness_delta
+            self.debt_money += debt_money_cost
+            self.education += education_cost
+            self.health += health_cost
+            self.happiness += happiness_cost
         elif answer == 'B':
-            self.debt_money +=debt_money_delta
-            self.education += education_delta
-            self.health += health_delta
-            self.happiness += happiness_delta
+            self.debt_money += debt_money_cost
+            self.education += education_cost
+            self.health += health_cost
+            self.happiness += happiness_cost
             
         # Ensure that the points don't exceed 100
         self.education = min(self.education, 100)
@@ -118,16 +122,15 @@ class GameLogic:
 
     def set_result(self):
         self.final_score = self.education + self.health + self.happiness
-        
-        if self.final_score in range(0, 80):
+        if self.education in range(0, 20):
             self.salary =  25000
-        elif self.final_score in range(81, 150):
+        elif self.education in range(21, 40):
             self.salary =  35000
-        elif self.final_score in range(151, 199):
+        elif self.education in range(41, 60):
             self.salary =  40000
-        elif self.final_score in range(200, 249):
+        elif self.education in range(61, 80):
             self.salary =  50000
-        elif self.final_score in range(250, 500):
+        elif 81 <= self.education <= 100:
             self.salary =  75000
         
         self.money = self.salary * 6 + self.debt_money
@@ -136,10 +139,10 @@ class GameLogic:
             self.result = "Win"
             account.save_user_data(self.player_name, self.final_score)
             
-        elif self.money < self.debt:
+        if self.money < self.debt: 
             self.result = "Lose"
             account.save_user_data(self.player_name, self.final_score)
-             
+            
     def get_leaderboard(self):
         leaderboard_data = account.fetch_leaderboard_data()
         return leaderboard_data
