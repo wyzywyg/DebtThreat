@@ -50,29 +50,46 @@
         }
 
         .intro-text {
-            font-family: Minecraftory;
-            color: white;
-            font-size: 10px;
-            margin: 20px;
+            position: fixed;
+            right: 60px;
+            top: 10px;
+            width: 1000px;
+            height: 80px;
             padding: 10px;
-            border-style: dashed;
-            border-width: medium;
-            border-color: cornsilk;
             border-radius: 8px;
+            background-color: rgba(28, 20, 39, 0.8);
+            color: white;
+            font-family: Minecraftory;
+            font-size: 18px;
             text-align: center;
+            border: 3px outset #000000;  
+            opacity: 0;
+            animation: fadeIn 2s forwards; 
         }
 
         progress {
-            width: 20%; /* Set a fixed width for the progress bars */
+            width: 13%; 
             height: 25px;
             margin-top: 8px;
             border-radius: 3px;
             border-style: solid;
-            border-color: white;
-            display: block;
+            border-color: black;    
+            position: relative;
+        }
+
+        progress::after {
+            font-family: Minecraftory;
+            content: attr(value); /* Display the value as content */
+            position: absolute;
+            top: 50%; /* Adjust the vertical position as needed */
+            left: 50%; /* Adjust the horizontal position as needed */
+            transform: translate(-50%, -50%);
+            color: white; /* Adjust the text color as needed */
+            font-size: 10px; /* Adjust the font size as needed */
         }
 
         .progress-container {
+            top: 150px; 
             display: flex;
             align-items: center;
             margin-bottom: 3px;
@@ -95,41 +112,43 @@
         }
 
         .debt-progress::-webkit-progress-value {
-            background:black;
+            background: #000000;
         }
 
         .debt-money-progress::-webkit-progress-value {
-            background: red;
+            background: #1B1F3A;
         }
 
         .education-progress::-webkit-progress-value {
-            background: blue;
+            background: #53354A;
         }
 
         .health-progress::-webkit-progress-value {
-            background: green;
+            background: #A64942;
         }
 
         .happiness-progress::-webkit-progress-value {
-            background: yellow;
+            background: #582233;
         }
 
         button {
             font-family: Minecraftory;
-            width: 180px; 
-            height: 150px; 
-            font-size: 18px;
-            background-color: rgba(139, 0, 0);
-            color:rgb(240, 234, 234);
-            margin: 80px; 
-            padding: 10px;
-            border-style: dashed;
-            border-width: medium;
-            border-color: cornsilk;
+            font size: 15px;
+            color: #E7DFD5;
+            background: rgba(89, 0, 0);
+            position: relative;
+            top: 170px;
+            padding: 20px;
+            width: 276px; 
+            height: 223px;
+            right: 250px;
+            margin-right: 60px;
+            box-shadow: 0 0 20px rgba(0 , 0, 0, 0.7);
             border-radius: 8px;
-            cursor: pointer;
+            border: 4px ridge rgb(66, 5, 22, 0.3);           
+             cursor: pointer;
             transition: transform 0.2s;
-            animation: fadeIn 2s; 
+            animation: fadeIn 2s;  
         }
 
         button:hover {
@@ -141,17 +160,18 @@
         }
         .whisper-container {
             position: fixed;
-            bottom: 40px;
-            right: 20px;
+            bottom: 20px;
+            right: 70px;
             width: 1000px;
+            height: 140px;
             padding: 10px;
-            border: 2px solid white;
             border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(44, 57, 75, 0.8);
+            border: 3px outset #000000;  
             color: white;
             font-family: Minecraftory;
-            font-size: 20px;
-            text-align: left;
+            font-size: 22px;
+            text-align: justify;
             opacity: 0; /* Start with opacity 0 */
             animation: fadeIn 2s forwards; /* Apply the fadeIn animation */
             white-space: pre-line; /* Preserve newlines in the text */
@@ -176,31 +196,48 @@
     <div class="progress-container">
         <span class="progress-name">Debt Money:</span>
         <progress class="debt-money-progress" value="{{ game.debt_money }}" max="500000">{{ game.debt_money }}</progress>
-        <span class="progress-value">{{ game.debt_money }}</span>
+        {% if game.debt_money_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.debt_money_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.debt_money_cost }}
+            </span>
+        {% endif %}
     </div>
     <div class="progress-container">
         <span class="progress-name">Education:</span>
         <progress class="education-progress" value="{{ game.education }}" max="100">{{ game.education }}</progress>
-        <span class="progress-value">{{ game.education }}</span>
+        {% if game.education_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.education_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.education_cost }}
+            </span>
+        {% endif %}
     </div>
     <div class="progress-container">
         <span class="progress-name">Health:</span>
         <progress class="health-progress" value="{{ game.health }}" max="100">{{ game.health }}</progress>
-        <span class="progress-value">{{ game.health }}</span>
+        {% if game.health_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.health_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.health_cost }}
+            </span>
+        {% endif %}
     </div>
     <div class="progress-container">
         <span class="progress-name">Happiness:</span>
         <progress class="happiness-progress" value="{{ game.happiness }}" max="100">{{ game.happiness }}</progress>
-        <span class="progress-value">{{ game.happiness }}</span>
+        {% if game.happiness_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.happiness_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.happiness_cost }}
+            </span>
+        {% endif %}
     </div>
+    
     <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'AC', scenario_next_key = 'AD') }}">
         {{ form.hidden_tag() }}
         <div>
             {% for choice, label in form.choice.choices %}
                 <label>
-                    <button type="radio" name="{{ form.choice.name }}" value="{{ choice }}" style="font-size: 16px; padding: 10px;" onclick="playClickSound()">
+                    <button type="radio" name="{{ form.choice.name }}" value="{{ choice }}" style="font-size: 16px; padding: 10px;">
                         {{ label }}
-                    </button>      
+                    </button>
                 </label>
             {% endfor %}
         </div>
