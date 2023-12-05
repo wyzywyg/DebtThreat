@@ -137,20 +137,16 @@ class GameLogic:
             self.salary =  75000
         
         self.money = self.salary * 6 + self.debt_money
-        
+          
         if self.money > self.debt:
             self.result = "Win"
-            account.create_users_table()
-            account.save_user_data(self.player_name, self.final_score)
-            account.fetch_leaderboard_data()
             
         if self.money < self.debt: 
             self.result = "Lose"
-            account.create_users_table()
-            account.save_user_data(self.player_name, self.final_score)
-            account.fetch_leaderboard_data()
+        
+        account.save_user_data(self.player_name, self.final_score, self.difficulty, self.university_type, self.program, self.dorm_type,
+                       self.debt, self.debt_money, self.education, self.health, self.happiness)
             
     def get_leaderboard(self):
         leaderboard_data = account.fetch_leaderboard_data()
         return leaderboard_data
-            
