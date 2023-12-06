@@ -1,7 +1,7 @@
 #game_logic.py
 
-from account import Account
-account = Account()
+from database import Database
+database = Database()
 
 class GameLogic:
     def __init__(self):
@@ -145,9 +145,14 @@ class GameLogic:
         if self.money < self.debt: 
             self.result = "Lose"
         
-        account.save_user_data(self.player_name, self.final_score, self.difficulty, self.university_type, self.program, self.dorm_type,
+        database.save_user_data(self.player_name, self.final_score, self.difficulty, self.university_type, self.program, self.dorm_type,
                        self.debt, self.debt_money, self.education, self.health, self.happiness)
             
     def get_leaderboard(self):
-        leaderboard_data = account.fetch_leaderboard_data()
+        leaderboard_data = database.fetch_leaderboard_data()
         return leaderboard_data
+    
+    def initialize_users_table(self):
+        database.initialize_users_table()
+    
+    
