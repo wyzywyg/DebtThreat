@@ -7,6 +7,9 @@
 - [Introduction](#introduction)
 - [Features](#features)
 - [Purpose](#purpose)
+- [Prerequisites](#prereqs)
+- [Gameplay](#game)
+- [Video Presentation](#video)
 - [Member Portfolio](#members)
 
 ### <a name="introduction"></a>
@@ -53,6 +56,36 @@ Are you ready to ready to make decisions that will either cost you money or cost
 
 It aims to help people achieve higher levels of economic productivity  which is in line with Indicator 8.2 of the SDG known as “Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.” 📈 Moreover, the creators of the program intend to assist people who desire to learn things in the field of finance, as well as help them in bettering their competency when it comes to ✨decision-making and critical thinking.✨
 </div>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+### <a name="prereqs"></a>
+## Prerequisites 👻
+🔻***Install Python 3.11 or newer*** : 
+If you have Python already installed, you should see the version appear in your terminal when you run either of the commands.
+<pre><code>python --version</code></pre>
+
+🔻***Install Flask*** :
+You can install the Flask in the command prompt with the command:
+<pre><code>pip install flask</code></pre>
+
+🔻***Verify Installation*** : 
+You can verify the installation with the command prompt:
+<pre><code>python import flask</code></pre>
+
+🔻***Install Flask-WTF*** : 
+You can install the Flask-WTF in the command prompt with the command:
+<pre><code>pip install flask-wtf</code></pre>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
+
+### <a name="game"></a>
+## Gameplay ⚰️
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
+
+### <a name="video"></a>
+## Video Presentation 🕷
+<div align ="justify">The video breaks down our project, explaining the four fundamental principles of Object-Oriented Programming. As you follow along, you'll gain practical insights into how these principles shape the structure and functionality of our code. Feel free to pause, rewind, and explore at your own pace to solidify your understanding of these crucial concepts.</div>
 
 ### <a name="members"></a>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
