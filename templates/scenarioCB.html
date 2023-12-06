@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Debt Threat</title>
+    <title>College Journey</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/jzPQFRv/image-removebg-preview-1.png">
     <audio id="voiceCB" src="{{ url_for('static', filename='voiceCB.mp3') }}" autoplay></audio>
     
@@ -62,13 +62,13 @@
 
         progress::after {
             font-family: Minecraftory;
-            content: attr(value); 
+            content: attr(value); /* Display the value as content */
             position: absolute;
-            top: 50%; 
-            left: 50%; 
+            top: 50%; /* Adjust the vertical position as needed */
+            left: 50%; /* Adjust the horizontal position as needed */
             transform: translate(-50%, -50%);
-            color: white; 
-            font-size: 10px; 
+            color: white; /* Adjust the text color as needed */
+            font-size: 10px; /* Adjust the font size as needed */
         }
 
         .progress-container {
@@ -84,7 +84,7 @@
             font-size: 13px;
             margin-left: 15px;
             margin-right: 15px;
-            min-width: 120px;
+            min-width: 120px; /* Set a minimum width for the progress names */
         }
 
         .progress-value {
@@ -124,7 +124,7 @@
             padding: 20px;
             width: 276px; 
             height: 223px;
-            right: 250px;
+            left: 200px;
             margin-right: 60px;
             box-shadow: 0 0 20px rgba(0 , 0, 0, 0.7);
             border-radius: 8px;
@@ -132,6 +132,7 @@
              cursor: pointer;
             transition: transform 0.2s;
             animation: fadeIn 2s;  
+            float: left;
         }
 
         button:hover {
@@ -144,7 +145,7 @@
         .whisper-container {
             position: fixed;
             bottom: 20px;
-            right: 70px;
+            right: 460px;
             width: 1000px;
             height: 140px;
             padding: 10px;
@@ -155,16 +156,16 @@
             font-family: Minecraftory;
             font-size: 22px;
             text-align: justify;
-            opacity: 0; 
-            animation: fadeIn 2s forwards;
-            white-space: pre-line; 
-            overflow: hidden; 
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 2s forwards; /* Apply the fadeIn animation */
+            white-space: pre-line; /* Preserve newlines in the text */
+            overflow: hidden; /* Hide the overflow text */
         }
         
         .whisper-container::before {
             content: "As your professor, I present a crucial proposition, the chance to join a research program abroad, a unique path to level up your academic standing. The decision rests in your hands.";
             animation: typing 5s steps(100, end), fadeIn 2s forwards;
-            white-space: pre-line; 
+            white-space: pre-line; /* Preserve newlines in the text */
         }
     </style>
     
@@ -178,19 +179,40 @@
     <div class="progress-container">
         <span class="progress-name">Debt Money:</span>
         <progress class="debt-money-progress" value="{{ game.debt_money }}" max="500000">{{ game.debt_money }}</progress>
+        {% if game.debt_money_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.debt_money_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.debt_money_cost }}
+            </span>
+        {% endif %}
     </div>
     <div class="progress-container">
         <span class="progress-name">Education:</span>
         <progress class="education-progress" value="{{ game.education }}" max="100">{{ game.education }}</progress>
+        {% if game.education_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.education_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.education_cost }}
+            </span>
+        {% endif %}
     </div>
     <div class="progress-container">
         <span class="progress-name">Health:</span>
         <progress class="health-progress" value="{{ game.health }}" max="100">{{ game.health }}</progress>
+        {% if game.health_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.health_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.health_cost }}
+            </span>
+        {% endif %}
     </div>
     <div class="progress-container">
         <span class="progress-name">Happiness:</span>
-        <progress class="happiness-progress" value="{{ game.happiness }}" max="100">{{ game.happiness }}</progress> 
+        <progress class="happiness-progress" value="{{ game.happiness }}" max="100">{{ game.happiness }}</progress>
+        {% if game.happiness_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.happiness_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.happiness_cost }}
+            </span>
+        {% endif %}
     </div>
+    
     <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'CB', scenario_next_key = 'CC') }}">
         {{ form.hidden_tag() }}
         <div>
@@ -206,4 +228,3 @@
     <div class="whisper-container"></div>
 </body>
 </html>
-
