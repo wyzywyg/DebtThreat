@@ -1,14 +1,109 @@
-<!-- quit_game.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quit Game</title>
+    <title>Game Menu</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/jzPQFRv/image-removebg-preview-1.png">
+    
+    <style>
+        body {
+            background-image: url('https://i.ibb.co/f4zFmRR/enlarge-cover.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        @font-face {
+            font-family: Minecraftory;
+            src: url("{{ url_for('static', filename='Minercraftory.ttf') }}");
+        }
+        .container {
+            font-family: Minecraftory;
+            max-width: 1500px;
+            margin-top: 150px;
+            flex-direction: column;
+            align-items: center;
+            background-color: #474E68;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.782);
+            animation: fadeIn 2s; 
+            display: flex;
+        }
+        h1 {
+            font-family: Minecraftory;
+            text-align: center;
+            color: #ffffff;
+            font-size: 40px;
+        }
+        h3 {
+            font-family: Minecraftory;
+            text-align: center;
+            color: #3D0C11;
+            font-size: 18px;
+            margin-top: 3px;
+
+        }
+        p {
+            font-family: Minecraftory;
+            text-align: left;
+            font-size: large;
+            color: cornsilk;
+            margin-top: 10px;
+        }
+        button {
+            font-family: Minecraftory;
+            background-color: #000000;
+            color: white;
+            font-size: 20px;
+            padding: 20px 35px;
+            border: none;
+            margin-top: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: block;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            color:black;
+            background-color: white;
+            transform: scale(1.1);
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Game Over</h1>
-    <p>Thank you for playing the University Simulator Game!</p>
-    <a href="{{ url_for('index.home') }}">Back to Menu</a>
+<div class="container">
+    <h1>Developers</h1>
+    <h3> Until your next Debt...or Death?</h3>
+    <p>Arquillo, Jaron Louise | 22-03531 </p>
+    <p>Banaag, Vince Clyde    | 22-06373 </p>
+    <p>De Jose, Mary Kristine | 22-03865 </p>
+    <p>Marasigan, Eljay       | 22-05538 </p>
+    <p>Reyes, Paul Alexis     | 22-00869 </p>
+</div>
+    <div>
+        <button onclick="exitGame()">Exit</button>
+    </div>
+
+    <script>
+        function showCreditsAndExit() {
+            // Display the credits modal
+            document.getElementById("creditsModal").style.display = "block";
+        }
+
+        function exitGame() {
+            // Redirect the user to a new page
+            window.location.href = "about:blank";
+        }
+    </script>
+
 </body>
 </html>
