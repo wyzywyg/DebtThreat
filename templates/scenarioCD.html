@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Debt Threat</title>
+    <title>College Journey</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/jzPQFRv/image-removebg-preview-1.png">
     <audio id="voiceCD" src="{{ url_for('static', filename='voiceCD.mp3') }}" autoplay></audio>
     
@@ -153,7 +153,7 @@
             border: 3px outset #000000;  
             color: white;
             font-family: Minecraftory;
-            font-size: 22px;
+            font-size: 19px;
             text-align: justify;
             opacity: 0; /* Start with opacity 0 */
             animation: fadeIn 2s forwards; /* Apply the fadeIn animation */
@@ -178,19 +178,40 @@
     <div class="progress-container">
         <span class="progress-name">Debt Money:</span>
         <progress class="debt-money-progress" value="{{ game.debt_money }}" max="500000">{{ game.debt_money }}</progress>
+        {% if game.debt_money_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.debt_money_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.debt_money_cost }}
+            </span>
+        {% endif %}
     </div>
     <div class="progress-container">
         <span class="progress-name">Education:</span>
         <progress class="education-progress" value="{{ game.education }}" max="100">{{ game.education }}</progress>
+        {% if game.education_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.education_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.education_cost }}
+            </span>
+        {% endif %}
     </div>
     <div class="progress-container">
         <span class="progress-name">Health:</span>
         <progress class="health-progress" value="{{ game.health }}" max="100">{{ game.health }}</progress>
+        {% if game.health_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.health_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.health_cost }}
+            </span>
+        {% endif %}
     </div>
     <div class="progress-container">
         <span class="progress-name">Happiness:</span>
-        <progress class="happiness-progress" value="{{ game.happiness }}" max="100">{{ game.happiness }}</progress> 
+        <progress class="happiness-progress" value="{{ game.happiness }}" max="100">{{ game.happiness }}</progress>
+        {% if game.happiness_cost != 0 %}
+            <span class="progress-value" style="color: {% if game.happiness_cost < 0 %}red{% else %}green{% endif %};">
+                {{ game.happiness_cost }}
+            </span>
+        {% endif %}
     </div>
+    
     <form method="POST" action="{{ url_for('index.scenarios', scenario_key = 'CD', scenario_next_key = 'DA') }}">
         {{ form.hidden_tag() }}
         <div>
