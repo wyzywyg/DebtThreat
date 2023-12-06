@@ -8,9 +8,10 @@ from scenarios import SCENARIO_DATA
 index = Blueprint('index', __name__)
 
 game_logic = GameLogic()
+
 @index.route('/')
 def home():
-    account.create_users_table()
+    game_logic.initialize_users_table()
     game_logic.__init__()
     return render_template('menu.html')
 
