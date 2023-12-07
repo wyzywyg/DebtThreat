@@ -1,7 +1,20 @@
 #game_logic.py
 
 from database import Database
-database = Database()
+
+from pointing_system import (
+    EasyPointingSystem,
+    NormalPointingSystem, 
+    HardPointingSystem, 
+    HardcorePointingSystem,
+    PublicUniversityPointingSystem, 
+    PrivateUniversityPointingSystem,
+    ProgramCostSystem,
+    CivilEngineeringProgramCost,
+    NursingProgramCost,
+    ComputerScienceProgramCost,
+    FineArtsProgramCost
+)
 
 class GameLogic:
     def __init__(self):
@@ -34,58 +47,40 @@ class GameLogic:
         self.difficulty = difficulty
 
         if difficulty == 'easy':
-            self.education += 20
-            self.health += 20
-            self.happiness += 20
+            pointing_system = EasyPointingSystem()
+            pointing_system.apply_points(self)
         elif difficulty == 'normal':
-            self.education += 15
-            self.health += 15
-            self.happiness += 15
+            pointing_system = NormalPointingSystem()
+            pointing_system.apply_points(self)
         elif difficulty == 'hard':
-            self.education += 10
-            self.health += 10
-            self.happiness += 10
+            pointing_system = HardPointingSystem()
+            pointing_system.apply_points(self)
         elif difficulty == 'hardcore':
-            self.education += 5
-            self.health += 5
-            self.happiness += 5
-        # Adjust points in education, health, and happiness based on the chosen difficulty
+            pointing_system = HardcorePointingSystem()
+            pointing_system.apply_points(self)
 
     def set_university(self, university_type):
         self.university_type = university_type
         
         if university_type == 'public':
-                self.education += 15
-                self.health += 5
-                self.happiness += 10
+                pointing_system = PublicUniversityPointingSystem()
+                pointing_system.apply_points(self)
         elif university_type == 'private':
-                self.education += 20
-                self.health += 10
-                self.happiness += 15
+                pointing_system = PrivateUniversityPointingSystem()
+                pointing_system.apply_points(self)
 
     def set_program(self, program):
-        program_costs = {
-            'public': {
-                'easy': {'civil_engineering': 60000, 'nursing': 80000, 'computer_science': 40000, 'fine_arts': 80000},
-                'normal': {'civil_engineering': 80000, 'nursing': 100000, 'computer_science': 60000, 'fine_arts': 100000},
-                'hard': {'civil_engineering': 120000, 'nursing': 140000, 'computer_science': 100000, 'fine_arts': 140000},
-                'hardcore': {'civil_engineering': 140000, 'nursing': 160000, 'computer_science': 120000, 'fine_arts': 160000}
-            },
-            'private': {
-                'easy': {'civil_engineering': 80000, 'nursing': 100000, 'computer_science': 60000, 'fine_arts': 100000},
-                'normal': {'civil_engineering': 100000, 'nursing': 120000, 'computer_science': 80000, 'fine_arts': 120000},
-                'hard': {'civil_engineering': 140000, 'nursing': 160000, 'computer_science': 120000, 'fine_arts': 160000},
-                'hardcore': {'civil_engineering': 200000, 'nursing': 220000, 'computer_science': 180000, 'fine_arts': 220000}
+        if self.university_type and self.difficulty:
+            program_costs = {
+                'civil_engineering': CivilEngineeringProgramCost(self.difficulty, self.university_type),
+                'nursing': NursingProgramCost(self.difficulty, self.university_type),
+                'computer_science': ComputerScienceProgramCost(self.difficulty, self.university_type),
+                'fine_arts': FineArtsProgramCost(self.difficulty, self.university_type),
+                # Add more programs as needed
             }
-        }
 
-        if program in program_costs[self.university_type][self.difficulty]:
-            cost = program_costs[self.university_type][self.difficulty][program]
-            self.debt_money -= cost
-            self.program = program
-            return cost
-        else:
-            return 0
+            pointing_system = program_costs.get(program, ProgramCostSystem(0))
+            pointing_system.apply_cost(self)
 
     def set_dorm(self, dorm_type):
         dorm_costs = {
@@ -105,6 +100,7 @@ class GameLogic:
         self.education_cost = education_cost
         self.health_cost = health_cost
         self.happiness_cost = happiness_cost
+        
         if answer == 'A':
             self.debt_money += debt_money_cost
             self.education += education_cost
@@ -126,15 +122,16 @@ class GameLogic:
 
     def set_result(self):
         self.final_score = self.education + self.health + self.happiness
-        if self.education in range(0, 20):
+        
+        if self.final_score in range(0, 80):
             self.salary =  25000
-        elif self.education in range(21, 40):
+        elif self.final_score in range(81, 150):
             self.salary =  35000
-        elif self.education in range(41, 60):
+        elif self.final_score in range(151, 199):
             self.salary =  40000
-        elif self.education in range(61, 80):
+        elif self.final_score in range(200, 249):
             self.salary =  50000
-        elif 81 <= self.education <= 100:
+        elif self.final_score in range (250, 400):
             self.salary =  75000
         
         self.money = self.salary * 6 + self.debt_money
@@ -144,15 +141,17 @@ class GameLogic:
             
         if self.money < self.debt: 
             self.result = "Lose"
-        
+        database = Database()
         database.save_user_data(self.player_name, self.final_score, self.difficulty, self.university_type, self.program, self.dorm_type,
                        self.debt, self.debt_money, self.education, self.health, self.happiness)
             
     def get_leaderboard(self):
+        database = Database()
         leaderboard_data = database.fetch_leaderboard_data()
         return leaderboard_data
     
     def initialize_users_table(self):
+        database = Database()
         database.initialize_users_table()
     
     
