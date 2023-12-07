@@ -1,56 +1,70 @@
 # scenarios.py
 
+class Scenario:
+    def __init__(self, options, outcomes):
+        self.options = options
+        self.outcomes = outcomes
+
+class FinancialScenario(Scenario):
+    pass
+
+class EducationScenario(Scenario):
+    pass
+
+class HealthScenario(Scenario):
+    pass
+
+class HappinnessScenario(Scenario):
+    pass
+
 SCENARIO_DATA = {
-    # EDUCATION AND HAPPINESS (PATTERN = ABAB) = 40 POINTS EACH
-    'AA': {'options': [('A', 'Buy New Textbooks'), ('B', 'Buy Used Textbooks')],
-           'outcomes': {'A': (-10000, 15, 0, 15), 'B': (-5000, 3, 0, 0)}},
+    'AA': EducationScenario([('A', 'Buy New Textbooks'), ('B', 'Buy Used Textbooks')],
+                                      {'A': (-10000, 15, 0, 15), 'B': (-5000, 3, 0, 0)}),
 
-    'AB': {'options': [('A', 'Accept'), ('B', 'Decline')],
-           'outcomes': {'A': (5000, -5, -2, -2), 'B': (0, 5, 0, 6)}},
+    'AB': FinancialScenario([('A', 'Accept'), ('B', 'Decline')],
+                                      {'A': (5000, -5, -2, -2), 'B': (0, 5, 0, 6)}),
 
-    'AC': {'options': [('A', 'Hire a Tutor'), ('B', 'Self-study')],
-           'outcomes': {'A': (-8000, 10, 2, 10), 'B': (0, 3, 0, 0)}},
+    'AC': EducationScenario([('A', 'Hire a Tutor'), ('B', 'Self-study')],
+                                      {'A': (-8000, 10, 2, 10), 'B': (0, 3, 0, 0)}),
 
-    'AD': {'options': [('A', 'Apply for part-time job'), ('B', 'Join the workshop')],
-           'outcomes': {'A': (7000, -10, -2, -3), 'B': (0, 10, 2, 9)}},
-    
-    # HEALTH (PATTERN = AABB) = 40 POINTS EACH
-    'BA': {'options': [('A', 'Accept'), ('B', 'Decline')],
-           'outcomes': {'A': (0, 15, 5, 5), 'B': (5000, -15, -3, 2)}},
+    'AD': FinancialScenario([('A', 'Apply for part-time job'), ('B', 'Join the workshop')],
+                                      {'A': (7000, -10, -2, -3), 'B': (0, 10, 2, 9)}),
 
-    'BB': {'options': [('A', 'Invest in gym membership'), ('B', 'Focus on Academics')],
-           'outcomes': {'A': (-15000, -5, 15, 5), 'B': (0, 5, -3, -5)}},
+    'BA': EducationScenario([('A', 'Accept'), ('B', 'Decline')],
+                          {'A': (0, 15, 5, 5), 'B': (5000, -15, -3, 2)}),
 
-    'BC': {'options': [('A', 'Attend event'), ('B', 'Skip event')],
-           'outcomes': {'A': (-5000, 7, -2, 5), 'B': (0, 3, 10, -5)}},
+    'BB': HealthScenario([('A', 'Invest in gym membership'), ('B', 'Focus on Academics')],
+                          {'A': (-15000, -5, 15, 5), 'B': (0, 5, -3, -5)}),
 
-    'BD': {'options': [('A', 'Take summer internship'), ('B', 'Take summer vacation')],
-           'outcomes': {'A': (7000, 7, 5, 5), 'B': (-5000, -7, 10, 5)}},
+    'BC': HappinnessScenario([('A', 'Attend event'), ('B', 'Skip event')],
+                          {'A': (-5000, 7, -2, 5), 'B': (0, 3, 10, -5)}),
 
-    # HEALTH (PATTERN = ABAB) = 40 POINTS EACH
-    'CA': {'options': [('A', 'Pay with your loan'), ('B', 'Prioritize studies')],
-           'outcomes': {'A': (-50000, 0, 13, 10), 'B': (0, 5, -7, -10)}},
+    'BD': HealthScenario([('A', 'Take summer internship'), ('B', 'Take summer vacation')],
+                          {'A': (7000, 7, 5, 5), 'B': (-5000, -7, 10, 5)}),
 
-    'CB': {'options': [('A', 'Accept'), ('B', 'Decline')],
-           'outcomes': {'A': (-85000, 15, 0, 5), 'B': (0, 5, 15, 5)}},
+    'CA': FinancialScenario([('A', 'Pay with your loan'), ('B', 'Prioritize studies')],
+                             {'A': (-50000, 0, 13, 10), 'B': (0, 5, -7, -10)}),
 
-    'CC': {'options': [('A', 'Time on relationship'), ('B', 'Prioritize studies')],
-           'outcomes': {'A': (-10000, -5, 15, 5), 'B': (0, 10, -5, -5)}},
+    'CB': FinancialScenario([('A', 'Accept'), ('B', 'Decline')],
+                             {'A': (-85000, 15, 0, 5), 'B': (0, 5, 15, 5)}),
 
-    'CD': {'options': [('A', 'Invest savings'), ('B', 'Research')],
-           'outcomes': {'A': (-30000, 15, -5, 5), 'B': (-5000, 5, -3, 3)}},
-    
-# EDUCATION AND HAPPINESS (PATTERN = AAAA) = 40 POINTS EACH
-    'DA': {'options': [('A', 'Buy new laptop'), ('B', 'Stick with current laptop')],
-           'outcomes': {'A': (-50000, 15, 0, 15), 'B': (0, 2, 0, -2)}},
+    'CC': FinancialScenario([('A', 'Time on relationship'), ('B', 'Prioritize studies')],
+                             {'A': (-10000, -5, 15, 5), 'B': (0, 10, -5, -5)}),
 
-    'DB': {'options': [('A', 'Attend'), ('B', 'Decline')],
-           'outcomes': {'A': (-25000, 10, 5, 10), 'B': (10000, -10, -5, -5)}},
+    'CD': FinancialScenario([('A', 'Invest savings'), ('B', 'Research')],
+                             {'A': (-30000, 15, -5, 5), 'B': (-5000, 5, -3, 3)}),
 
-    'DC': {'options': [('A', 'Enroll to the course'), ('B', 'Self-study')],
-           'outcomes': {'A': (-35000, 15, -5, 10), 'B': (0, 2, -2, -3)}},
+    'DA': EducationScenario([('A', 'Buy new laptop'), ('B', 'Stick with the current laptop')],
+                                      {'A': (-50000, 15, 0, 15), 'B': (0, 2, 0, -2)}),
 
-    'DD': {'options': [('A', 'Purchase new regalia'), ('B', 'Rent a set of regalia')],
-           'outcomes': {'A': (-15000, 0, 0, 5), 'B': (-7500, 0, 0, 2)}},
+    'DB': EducationScenario([('A', 'Attend'), ('B', 'Decline')],
+                                      {'A': (-25000, 10, 5, 10), 'B': (10000, -10, -5, -5)}),
+
+    'DC': FinancialScenario([('A', 'Enroll in the course'), ('B', 'Self-study')],
+                                      {'A': (-35000, 15, -5, 10), 'B': (0, 2, -2, -3)}),
+
+    'DD': FinancialScenario([('A', 'Purchase new regalia'), ('B', 'Rent a set of regalia')],
+                                      {'A': (-15000, 0, 0, 5), 'B': (-7500, 0, 0, 2)}),
+
     # Add more scenarios as needed...
 }
