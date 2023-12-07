@@ -3,7 +3,7 @@
 from flask import Blueprint, render_template, redirect, url_for
 from forms import NewGameForm, DifficultyForm, UniversityForm, ProgramForm, DormForm, ScenarioForm
 from game_logic import GameLogic
-from scenarios import SCENARIO_DATA
+from scenarios import SCENARIO_DATA, Scenario
 
 index = Blueprint('index', __name__)
 
@@ -87,16 +87,16 @@ def dorm():
 
 @index.route('/scenarios/<scenario_key>/<scenario_next_key>', methods=['GET', 'POST'])
 def scenarios(scenario_key, scenario_next_key):
-    scenario_data = SCENARIO_DATA.get(scenario_key)
+    scenario = SCENARIO_DATA.get(scenario_key)
 
-    if scenario_data:
-        choices = scenario_data['options']
+    if scenario and isinstance(scenario, Scenario):
+        choices = scenario.options
         form = ScenarioForm(choices=choices)
 
         if form.validate_on_submit():
             answer = form.choice.data
-            game_logic.set_scenario(answer, *scenario_data['outcomes'][answer])
-            return redirect(url_for('index.scenarios', scenario_key=scenario_next_key, scenario_next_key=scenario_next_key))  # Include scenario_key parameter
+            game_logic.set_scenario(answer, *scenario.outcomes[answer])
+            return redirect(url_for('index.scenarios', scenario_key=scenario_next_key, scenario_next_key=scenario_next_key))
 
         return render_template(f'scenario{scenario_next_key}.html', form=form, game=game_logic)
 
@@ -104,15 +104,15 @@ def scenarios(scenario_key, scenario_next_key):
 
 @index.route('/scenarios/<scenario_key>', methods=['GET', 'POST'])
 def get_result(scenario_key):
-    scenario_data = SCENARIO_DATA.get(scenario_key)
+    scenario = SCENARIO_DATA.get(scenario_key)
 
-    if scenario_data:
-        choices = scenario_data['options']
+    if scenario and isinstance(scenario, Scenario):
+        choices = scenario.options
         form = ScenarioForm(choices=choices)
 
         if form.validate_on_submit():
             answer = form.choice.data
-            game_logic.set_scenario(answer, *scenario_data['outcomes'][answer])
+            game_logic.set_scenario(answer, *scenario.outcomes[answer])
             return redirect(url_for('index.result'))  # Include scenario_key parameter
 
         return render_template(f'scenario{scenario_key}.html', form=form, game=game_logic)
