@@ -70,6 +70,7 @@ class GameLogic:
                 pointing_system.apply_points(self)
 
     def set_program(self, program):
+        self.program = program
         if self.university_type and self.difficulty:
             program_costs = {
                 'civil_engineering': CivilEngineeringProgramCost(self.difficulty, self.university_type),
