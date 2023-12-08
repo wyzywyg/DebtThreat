@@ -82,7 +82,7 @@ You can install the Flask-WTF in the command prompt with the command:
 ## Gameplay ⚰️
 
 <div align="center">
-<a href="https://www.youtube.com/watch?v=jf3J6fNNe-Y">
+<a href="https://youtu.be/pVdu-sCM3tw?si=8mHpMwFMXqwYBYGl">
 <img src="https://i.ibb.co/bmX8vTb/Screenshot-2023-12-08-150042.png" height="auto" width="auto"><br><br></a>
 <img src="https://i.ibb.co/Wf8jKxf/Screenshot-2023-12-07-115051.png" height="auto" width="auto"><br><br>
 <img src="https://i.ibb.co/RDnycFr/Screenshot-2023-12-07-113634.png" height="auto" width="auto"><br><br>
