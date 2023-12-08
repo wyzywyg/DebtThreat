@@ -98,7 +98,7 @@ You can install the Flask-WTF in the command prompt with the command:
 <div align ="justify">The video breaks down our project, explaining the four fundamental principles of Object-Oriented Programming. As you follow along, you'll gain practical insights into how these principles shape the structure and functionality of our code. Feel free to pause, rewind, and explore at your own pace to solidify your understanding of these crucial concepts.</div><br><br>
 
 <div align="center">
-<a href="https://www.youtube.com/watch?v=jf3J6fNNe-Y">
+<a href="https://youtu.be/3ZrvY6cCGiM">
 <img src="https://i.ibb.co/TMhdfXF/Untitled-design.jpg" height="auto" width="auto"><br><br></a>
 </div>
 
