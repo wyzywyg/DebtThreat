@@ -77,6 +77,9 @@ You can verify the installation with the command prompt:
 You can install the Flask-WTF in the command prompt with the command:
 <pre><code>pip install flask-wtf</code></pre>
 
+🔻***Install PyMySQL*** : 
+<pre><code>pip install PyMySQL</code></pre>
+
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
 
 ### <a name="game"></a>
@@ -91,6 +94,9 @@ You can install the Flask-WTF in the command prompt with the command:
 <img src="https://i.ibb.co/6YVp6z5/Screenshot-2023-12-07-114617.png" height="auto" width="auto"><br><br>	
 </div>
 
+	
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
+
 ### <a name="demo"></a>
 ## Game Demo 🦇
 
@@ -98,8 +104,6 @@ You can install the Flask-WTF in the command prompt with the command:
 <a href="https://www.youtube.com/watch?v=pVdu-sCM3twcan">
 <img src="https://i.ibb.co/3TXsc4z/Untitled-design.png" height="auto" width="auto"><br><br></a>
 </div>
-	
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
 	
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
 
